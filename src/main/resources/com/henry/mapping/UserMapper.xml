@@ -6,6 +6,7 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
+  
   <sql id="Base_Column_List" >
     uid, username, password
   </sql>

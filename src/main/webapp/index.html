@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>注册</title>
+	<title>登录</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/flat-ui.min.css" />
 	<link rel="stylesheet" href="css/font-awesome.min.css" />
@@ -10,15 +10,31 @@
 		body {
 			background-color: #1ABC9C;
 		}
-		#register-div {
+		#login-div {
 			margin-top: 100px;
 			padding: 20px 20px;
 			background-color: #ECF0F1; 
 		}
 	</style>
+	
+	<script src="js/jquery.min.js"></script>
+	
+	<script>
+		$(document).ready(function() {
+			
+			$("button").click(function() {
+				$.post("login", $("form").serialize(), function(data) {
+					
+					alert(data);
+				});
+			});
+			
+			
+		})	
+	</script>
 </head>
 <body>
-	<div class="container col-sm-6 col-sm-offset-3" id="register-div">
+	<div class="container col-sm-6 col-sm-offset-3" id="login-div">
 		<form action="" method="POST">
 			<div class="form-group">
 				<div class="input-group">
@@ -34,10 +50,8 @@
 				</div>
 			</div>
 			
-			<button type="submit" class="btn btn-primary btn-block">登录</button>
+			<button type="button" class="btn btn-primary btn-block">登录</button>
 		</form>
 	</div>
-	
-	<a href="hello">hello</a>
 </body>
 </html>

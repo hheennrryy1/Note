@@ -4,6 +4,17 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
+  
+  	<!-- 配置Spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:Spring.xml, classpath:Spring-Mybatis.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+  
+  
   <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
 	<servlet>
 		<servlet-name>springDispatcherServlet</servlet-name>
