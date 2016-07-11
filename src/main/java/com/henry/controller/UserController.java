@@ -1,5 +1,7 @@
 package com.henry.controller;
 
+import java.io.UnsupportedEncodingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +16,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/signin")
+	@ResponseBody
+	public String signin(User user) throws UnsupportedEncodingException {
+		userService.insert(user);
+		return "success";
+	}
+	
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(User user) {
-		int i = userService.insert(user);
+	public String login(User user) throws UnsupportedEncodingException {
+		
 		return "success";
 	}
 }

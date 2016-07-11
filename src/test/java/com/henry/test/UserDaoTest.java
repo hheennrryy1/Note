@@ -33,10 +33,17 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void insert1() {
 		User user = new User();
 		user.setUsername("henry");
 		user.setPassword("sdfssdfsdfd");
-		userService.insert(user);
+		//userService.insert(user);
+	}
+	
+	@Test
+	public void select() {
+		User user = mapper.selectByUsername("henry");
+		System.out.println(user.toString());
 	}
 }

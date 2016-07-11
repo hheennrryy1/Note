@@ -6,8 +6,17 @@ public class User {
     private String username;
 
     private String password;
+    
+    private String salt;
+    
+    public User() {}
 
-    public Integer getUid() {
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
+	}
+
+	public Integer getUid() {
         return uid;
     }
 
@@ -29,5 +38,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+    
+    public String getSalt() {
+    	return salt;
+    }
+    
+    public void setSalt(String salt) {
+    	this.salt = salt;
     }
 }

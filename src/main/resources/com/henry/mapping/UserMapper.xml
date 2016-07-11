@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.henry.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.henry.entity.User" >
+  <resultMap id="BaseResultMap" type="User" >
     <id column="uid" property="uid" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR"/>
   </resultMap>
   
   <sql id="Base_Column_List" >
-    uid, username, password
+    uid, username, password, salt
   </sql>
+  
+  <sql id="Login_Column_List">
+  	password, salt
+  </sql>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
     where uid = #{uid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select
+  	<include refid="Login_Column_List"/>
+  	from user
+  	where username = #{username,jdbcType=VARCHAR}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.henry.entity.User" >
-    insert into user (uid, username, password
-      )
-    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
+  
+  <insert id="insert" parameterType="User" >
+    insert into user
+     (uid, username, password, salt)
+    values
+     (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt, jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.henry.entity.User" >
+  
+  <insert id="insertSelective" parameterType="User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
@@ -39,6 +55,7 @@
         password,
       </if>
     </trim>
+    
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
@@ -51,7 +68,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.henry.entity.User" >
+  
+  <update id="updateByPrimaryKeySelective" parameterType="User" >
     update user
     <set >
       <if test="username != null" >
@@ -63,10 +81,12 @@
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.henry.entity.User" >
+  
+  <update id="updateByPrimaryKey" parameterType="User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
+  
 </mapper>
