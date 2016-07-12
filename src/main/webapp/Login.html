@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>登录</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/flat-ui.min.css" />
@@ -16,33 +17,14 @@
 			background-color: #ECF0F1; 
 		}
 	</style>
-	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/hashes.js"></script>
 	<script src="js/jquery.md5.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$("button").click(function() {
-				var SHA512 = new Hashes.SHA512			
-				var username = $("#username").val();
-				var password = $("#password").val();
-				password = SHA512.hex(password);			
-				var args = {
-					username : username,
-					password : password
-				};
-//				$.post("login", $("form").serialize(), function(data) {
-				$.post("login", args, function(data) {
-					alert(data);
-				});
-			});
-		})	
-	</script>
+ 	<script src="js/login.js"></script>
 </head>
 <body>
 	<div class="container col-sm-6 col-sm-offset-3" id="login-div">
-		<form action="" method="POST">
+		<form action="#" method="POST">
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
@@ -56,7 +38,6 @@
 					<input type="password" class="form-control" id="password" name="password" placeholder="密码" required="required"/>
 				</div>
 			</div>
-			
 			<button type="button" class="btn btn-primary btn-block">登录</button>
 		</form>
 	</div>

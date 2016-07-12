@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>注册</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/flat-ui.min.css" />
@@ -19,24 +20,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/hashes.js"></script>
 	<script src="js/jquery.md5.js"></script>
-	
-	<script>
-		$(document).ready(function() {
-			$("button").click(function() {
-				var SHA512 = new Hashes.SHA512			
-				var username = $("#username").val();
-				var password = $("#password").val();
-				password = SHA512.hex(password);			
-				var args = {
-					username : username,
-					password : password
-				};
-				$.post("signin", args, function(data) {
-					alert(data);
-				});
-			});
-		})	
-	</script>
+	<script src="js/register.js"></script>
 </head>
 <body>
 	<div class="container col-sm-6 col-sm-offset-3" id="register-div">

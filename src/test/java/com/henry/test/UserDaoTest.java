@@ -43,7 +43,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void select() {
-		User user = mapper.selectByUsername("henry");
-		System.out.println(user.toString());
+		User user = mapper.selectByUsername("h");
+		System.out.println(user);
 	}
 }

@@ -42,6 +42,8 @@
 		<property name="order" value="1"></property>
 		<property name="suffix" value=".ftl"></property>
 		<property name="contentType" value="text/html;charset=UTF-8"></property>
+		<!-- 获取request对象 和Request不一样 -->
+		<property name="requestContextAttribute" value="request"/>
 	</bean>
 
 </beans>

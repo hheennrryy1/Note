@@ -8,7 +8,7 @@
     <result column="salt" property="salt" jdbcType="VARCHAR"/>
   </resultMap>
   
-  <sql id="Base_Column_List" >
+   <sql id="Base_Column_List" >
     uid, username, password, salt
   </sql>
   
@@ -37,9 +37,9 @@
   
   <insert id="insert" parameterType="User" >
     insert into user
-     (uid, username, password, salt)
+     (username, password, salt)
     values
-     (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt, jdbcType=VARCHAR})
+     (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt, jdbcType=VARCHAR})
   </insert>
   
   <insert id="insertSelective" parameterType="User" >
@@ -87,6 +87,6 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
-  </update>
+  </update> 
   
 </mapper>

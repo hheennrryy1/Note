@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.henry.entity.User;
 import com.henry.service.UserService;
+import com.henry.utils.PasswordUtil;
 
 @Controller
 public class UserController {
@@ -25,8 +26,22 @@ public class UserController {
 	
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(User user) throws UnsupportedEncodingException {
-		
-		return "success";
+	public int login(String username, String password) throws UnsupportedEncodingException {
+		int status = 0;//用户名或密码错误
+		User user = userService.selectByUsername(username);
+		if(user==null) {
+			status = -1;//用户不存在
+			return status;
+		}
+		password = PasswordUtil.encode(password, user.getSalt());
+		if(user.getPassword().equals(password)) {
+			status = 1;//正确登录
+		}
+		return status;
+	}
+	
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
 	}
 }

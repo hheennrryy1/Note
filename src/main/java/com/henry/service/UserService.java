@@ -23,4 +23,8 @@ public class UserService {
 		user.setPassword(password);
 		return mapper.insert(user);
 	}
+	
+	public User selectByUsername(String username) {
+		return mapper.selectByUsername(username);
+	}
 }

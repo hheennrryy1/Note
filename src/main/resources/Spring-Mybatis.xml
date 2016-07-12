@@ -19,7 +19,6 @@
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 别名 -->
 		<property name="typeAliasesPackage" value="com.henry.entity"></property>
-		
 		<property name="mapperLocations" value="classpath:com/henry/mapping/*.xml" />
 		
 	</bean>
