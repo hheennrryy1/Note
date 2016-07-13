@@ -23,17 +23,6 @@ public class UserDaoTest {
 	
 	@Test
 	@Ignore
-	public void insert() {
-		/*
-		User user = new User();
-		user.setUsername("henry");
-		user.setPassword("sdfsd");
-		mapper.insert(user);
-		*/
-	}
-	
-	@Test
-	@Ignore
 	public void insert1() {
 		User user = new User();
 		user.setUsername("henry");
@@ -42,8 +31,23 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void select() {
-		User user = mapper.selectByUsername("h");
+		User user = mapper.selectByUsername("test");
 		System.out.println(user);
+	}
+	
+	@Test
+	@Ignore
+	public void update() {
+		User user = new User();
+		user.setId(2);
+		user.setUsername("henry");
+		mapper.updateByIdSelective(user);
+	}
+	
+	@Test
+	public void delete() {
+		mapper.deleteById(1);
 	}
 }

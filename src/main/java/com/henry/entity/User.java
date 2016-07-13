@@ -1,30 +1,32 @@
 package com.henry.entity;
 
+import java.util.List;
+
 public class User {
-    private Integer uid;
+    private Integer id;
 
     private String username;
 
     private String password;
     
     private String salt;
-    
-    public User() {}
+
+	public User() {}
 
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
 	}
 
-	public Integer getUid() {
-        return uid;
-    }
+    public Integer getId() {
+		return id;
+	}
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getUsername() {
+	public String getUsername() {
         return username;
     }
 

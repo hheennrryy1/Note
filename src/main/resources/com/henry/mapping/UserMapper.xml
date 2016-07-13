@@ -2,25 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.henry.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="User" >
-    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="salt" property="salt" jdbcType="VARCHAR"/>
   </resultMap>
   
    <sql id="Base_Column_List" >
-    uid, username, password, salt
+    id, username, password, salt
   </sql>
   
   <sql id="Login_Column_List">
   	password, salt
   </sql>
   
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from user
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   
   <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -30,9 +30,9 @@
   	where username = #{username,jdbcType=VARCHAR}
   </select>
   
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from user
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   
   <insert id="insert" parameterType="User" >
@@ -45,8 +45,8 @@
   <insert id="insertSelective" parameterType="User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        uid,
+      <if test="id != null" >
+        id,
       </if>
       <if test="username != null" >
         username,
@@ -57,8 +57,8 @@
     </trim>
     
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="uid != null" >
-        #{uid,jdbcType=INTEGER},
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="username != null" >
         #{username,jdbcType=VARCHAR},
@@ -69,7 +69,7 @@
     </trim>
   </insert>
   
-  <update id="updateByPrimaryKeySelective" parameterType="User" >
+  <update id="updateByIdSelective" parameterType="User" >
     update user
     <set >
       <if test="username != null" >
@@ -79,14 +79,14 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   
-  <update id="updateByPrimaryKey" parameterType="User" >
+  <update id="updateById" parameterType="User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
-    where uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update> 
   
 </mapper>

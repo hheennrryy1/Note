@@ -3,17 +3,17 @@ package com.henry.dao;
 import com.henry.entity.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer uid);
+    int deleteById(Integer uid);
 
     int insert(User user);
 
     int insertSelective(User user);
 
-    User selectByPrimaryKey(Integer uid);
+    User selectById(Integer uid);
     
     User selectByUsername(String username);
     
-    int updateByPrimaryKeySelective(User user);
+    int updateByIdSelective(User user);
 
-    int updateByPrimaryKey(User user);
+    int updateById(User user);
 }
