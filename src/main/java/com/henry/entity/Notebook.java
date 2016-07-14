@@ -1,6 +1,7 @@
 package com.henry.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Notebook {
     private Integer id;
@@ -11,8 +12,9 @@ public class Notebook {
     
     private User user;
     
-    public Notebook(){};
+    private List<Note> notes;
     
+    public Notebook(){};
 
     public Integer getId() {
 		return id;
@@ -44,5 +46,15 @@ public class Notebook {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public List<Note> getNotes() {
+		return notes;
+	}
+
+
+	public void setNotes(List<Note> notes) {
+		this.notes = notes;
 	}
 }

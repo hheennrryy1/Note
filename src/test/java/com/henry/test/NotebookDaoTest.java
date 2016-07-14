@@ -1,5 +1,8 @@
 package com.henry.test;
 
+import java.util.List;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +20,17 @@ public class NotebookDaoTest {
 	NotebookMapper mapper;
 	
 	@Test
+	@Ignore
 	public void select() {
 		Notebook notebook = mapper.selectById(1);
 		System.out.println(notebook.getUser().getUsername());
-		
 	}
 	
+	@Test
+	public void selectByUserId() {
+		List<Notebook> notebooks = mapper.selectByUserId(2);
+		for(Notebook nb : notebooks) {
+			System.out.println(nb.getUser().getUsername());
+		}
+	}
 }

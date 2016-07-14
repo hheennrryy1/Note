@@ -3,7 +3,7 @@
 
 <mapper namespace="com.henry.dao.NotebookMapper">
 	<resultMap type="Notebook" id="BaseResultMap">
-		<id column="id" property="id" jdbcType="INTEGER"/>
+		<id column="nbid" property="id" jdbcType="INTEGER"/>
 		<result column="name" property="name" jdbcType="VARCHAR"/>
 		<result column="createtime" property="createtime" jdbcType="TIMESTAMP"/>
 		<association property="user" javaType="User">
@@ -14,8 +14,16 @@
 	
  	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 	    select 
-	    u.id,u.username,nb.id,nb.name,nb.createtime
+	    u.id,u.username,nb.nbid,nb.name,nb.createtime
 	    from user u, notebook nb
-	    where nb.user_id = u.id and nb.id = #{id,jdbcType=INTEGER}
+	    where nb.user_id = u.id and nb.nbid = #{nbid,jdbcType=INTEGER}
 	</select>
+	
+	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		select
+		u.id,u.username,nb.nbid,nb.name,nb.createtime
+		from user u, notebook nb
+		where nb.user_id = u.id and nb.user_id = #{id,jdbcType=INTEGER}
+	</select>
+	
 </mapper>

@@ -10,7 +10,9 @@ public class User {
     private String password;
     
     private String salt;
-
+    
+    private List<Notebook> notebooks;
+    
 	public User() {}
 
 	@Override
@@ -49,4 +51,12 @@ public class User {
     public void setSalt(String salt) {
     	this.salt = salt;
     }
+
+	public List<Notebook> getNotebooks() {
+		return notebooks;
+	}
+
+	public void setNotebooks(List<Notebook> notebooks) {
+		this.notebooks = notebooks;
+	}
 }
