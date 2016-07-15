@@ -31,7 +31,6 @@ public class UserDaoTest {
 	}
 	
 	@Test
-	@Ignore
 	public void select() {
 		User user = mapper.selectByUsername("test");
 		System.out.println(user);
@@ -47,6 +46,7 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void delete() {
 		mapper.deleteById(1);
 	}

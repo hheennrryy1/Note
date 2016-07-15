@@ -8,7 +8,7 @@ $(document).ready(function() {
 			username : username,
 			password : password
 		};
-		$.post("login", args, function(data) {
+		$.post("user/login", args, function(data) {
 			if(data==-1) {
 				alert("用户不存在");						
 			}
@@ -16,7 +16,7 @@ $(document).ready(function() {
 				alert("用户名或密码错误");
 			}
 			else {
-				window.location.href = "index";
+				window.location.href = "user/index";
 			}
 		});
 	});

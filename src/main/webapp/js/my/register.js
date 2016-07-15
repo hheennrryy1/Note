@@ -8,8 +8,13 @@ $(document).ready(function() {
 			username : username,
 			password : password
 		};
-		$.post("signin", args, function(data) {
-			alert(data);
+		$.post("user/register", args, function(data) {
+			if(data=="fail") {
+				alert("用户名已存在");
+			}
+			else {
+				alert("成功");
+			}
 		});
 	});
 })	

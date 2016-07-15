@@ -27,4 +27,8 @@ public class UserService {
 	public User selectByUsername(String username) {
 		return mapper.selectByUsername(username);
 	}
+	
+	public String encode(String password, String salt) {
+		return PasswordUtil.encode(password, salt);
+	}
 }
