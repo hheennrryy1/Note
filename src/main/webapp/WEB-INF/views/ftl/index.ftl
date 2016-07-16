@@ -2,22 +2,22 @@
 
 <@l.htmlHead "首页">
 		<script src="${path}/js/public/summernote.min.js"></script>
+		<script src="${path}/js/my/index.js"></script>
 		<link rel="stylesheet" href="${path}/css/summernote.css"/>
-		<script>
-			$(document).ready(function(){
-				$("#main-nav li:eq(0)").addClass("active");
-				$('#summernote').summernote({
-				  height: 300,                 // set editor height
-				  minHeight: null,             // set minimum height of editor
-				  maxHeight: null,             // set maximum height of editor
-				  focus: true                  // set focus to editable area after initializing summernote
-				});
-			})	
-		</script>
 </@l.htmlHead>
 
 <@l.htmlBody>
-	<div class="container col-md-6" id="main-div">
-		<div id="summernote">Hello Summernote</div>
+	<div class="container col-md-8 col-md-offset-1" id="main-div">
+		<form action="" method="POST">
+			<div class="form-group">
+				<input type="text" class="form-control" required="required"/>
+			</div>
+			
+			<div class="form-group">	
+				<textarea class="form-control" id="summernote"></textarea>
+			</div>
+			
+			<button type="submit" class="btn btn-block btn-primary">创建</button>
+		</form>
 	</div>
 </@l.htmlBody>
