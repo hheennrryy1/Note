@@ -10,14 +10,14 @@
 	<div class="container col-md-8 col-md-offset-1" id="main-div">
 		<form action="" method="POST">
 			<div class="form-group">
-				<input type="text" class="form-control" required="required"/>
+				<input type="text" class="form-control" required="required" placeholder="输入标题"/>
 			</div>
 			
 			<div class="form-group">	
 				<textarea class="form-control" id="summernote"></textarea>
 			</div>
 			
-			<button type="submit" class="btn btn-block btn-primary">创建</button>
+			<button type="button" class="btn btn-block btn-primary" id="createButton">创建</button>
 		</form>
 	</div>
 </@l.htmlBody>

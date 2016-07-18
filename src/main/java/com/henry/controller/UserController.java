@@ -47,13 +47,33 @@ public class UserController {
 		return status;
 	}
 	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("username");
+		return "redirect:/Login.html";
+	}
+	
+	/**
+	 * 转向到首页
+	 * @return
+	 */
 	@RequestMapping("/index")
 	public String index() {
 		return "index";
 	}
 	
+	/**
+	 * 转向到修改密码的页面
+	 * @return
+	 */
 	@RequestMapping("/password")
 	public String password() {
 		return "password";
+	}
+	
+	@RequestMapping("updatePassword")
+	public String updatePassword(String password) {
+		
+		return "index";
 	}
 }

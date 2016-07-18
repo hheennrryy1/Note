@@ -1,5 +1,4 @@
 $(document).ready(function() {
-		
 		$('#myForm').validator().on('submit', function (e) {
 			  if (e.isDefaultPrevented()) {
 			  } else {
@@ -21,15 +20,5 @@ $(document).ready(function() {
 					  }
 				  });
 			  }
-			});
-		
-		
-		
-		
-		
-		
-		
-/*		$("button").click(function() {
-		
-	});*/
+		});
 })	

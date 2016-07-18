@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="${path}/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="${path}/css/flat-ui.min.css" />
 		<link rel="stylesheet" href="${path}/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="${path}/css/layout.css" />
 		<#nested>
 	</head>
@@ -35,16 +34,16 @@
                 <ul id="main-nav" class="nav nav-tabs nav-stacked">
                     <li>
                         <a href="${path}/user/index">
-                           	 首页         
+                           	 <i class="fa fa-home fa-fw"></i>首页         
                         </a>
                     </li>
                     <li>
                         <a href="#userSetting" class="nav-header collapsed" data-toggle="collapse">
-					                               用户管理
+					    	<i class="fa fa-user fa-fw"></i>用户管理
                         </a>
                         <ul id="userSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="${path}/user/password">修改密码</a></li>
-                            <li><a href="#">功能</a></li>
+                            <li><a href="${path}/user/logout">登出</a></li>
                             <li><a href="#">功能</a></li>
                             <li><a href="#">功能</a></li>
                             <li><a href="#">功能</a></li>
@@ -53,7 +52,7 @@
                     
                     <li>
                         <a href="#notebookSetting" class="nav-header collapsed" data-toggle="collapse">
-					           	笔记本管理
+					    	<i class="fa fa-book fa-fw"></i>笔记本管理
                         </a>
                         <ul id="notebookSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="#">笔记</a></li>
@@ -66,7 +65,7 @@
                     
                     <li>
                         <a href="#noteSetting" class="nav-header collapsed" data-toggle="collapse">
-					           	笔记
+					           	<i class="fa fa-sticky-note fa-fw"></i>笔记
                         </a>
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="#">笔记</a></li>
