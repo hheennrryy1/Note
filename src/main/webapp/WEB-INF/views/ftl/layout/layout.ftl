@@ -44,9 +44,6 @@
                         <ul id="userSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="${path}/user/password">修改密码</a></li>
                             <li><a href="${path}/user/logout">登出</a></li>
-                            <li><a href="#">功能</a></li>
-                            <li><a href="#">功能</a></li>
-                            <li><a href="#">功能</a></li>
                         </ul>
                     </li>
                     
@@ -55,7 +52,7 @@
 					    	<i class="fa fa-book fa-fw"></i>笔记本管理
                         </a>
                         <ul id="notebookSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="#">笔记</a></li>
+                            <li><a href="${path}/notebook/list/${Session.user.id}">笔记本列表</a></li>
                             <li><a href="#">笔记</a></li>
                             <li><a href="#">笔记</a></li>
                             <li><a href="#">笔记</a></li>

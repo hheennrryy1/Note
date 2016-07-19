@@ -38,15 +38,6 @@ public class UserDaoTest {
 	
 	@Test
 	@Ignore
-	public void update() {
-		User user = new User();
-		user.setId(2);
-		user.setUsername("henry");
-		mapper.updateByIdSelective(user);
-	}
-	
-	@Test
-	@Ignore
 	public void delete() {
 		mapper.deleteById(1);
 	}

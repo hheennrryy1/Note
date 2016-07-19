@@ -28,6 +28,10 @@ public class UserService {
 		return mapper.selectByUsername(username);
 	}
 	
+	public int updatePasswordById(User user) {
+		return mapper.updatePasswordById(user);
+	}
+	
 	public String encode(String password, String salt) {
 		return PasswordUtil.encode(password, salt);
 	}

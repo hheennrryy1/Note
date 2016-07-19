@@ -13,7 +13,5 @@ public interface UserMapper {
     
     User selectByUsername(String username);
     
-    int updateByIdSelective(User user);
-
-    int updateById(User user);
+    int updatePasswordById(User user);
 }

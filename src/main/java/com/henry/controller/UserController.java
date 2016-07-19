@@ -3,6 +3,7 @@ package com.henry.controller;
 import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,11 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@RequestMapping("/test")
+	public void test(String username) {
+		System.out.println(username);
+	}
 	
 	@RequestMapping("/register")
 	@ResponseBody
@@ -42,14 +48,14 @@ public class UserController {
 		password = userService.encode(password, user.getSalt()); //加盐 
 		if(user.getPassword().equals(password)) {
 			status = 1;//正确登录
-			session.setAttribute("username", username);
+			session.setAttribute("user", user);
 		}
 		return status;
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("username");
+		session.removeAttribute("user");
 		return "redirect:/Login.html";
 	}
 	
@@ -71,9 +77,20 @@ public class UserController {
 		return "password";
 	}
 	
-	@RequestMapping("updatePassword")
-	public String updatePassword(String password) {
+	@RequestMapping("/updatePassword")
+	@ResponseBody
+	public String updatePassword(String oldPassword, String newPassword, HttpSession session) {
+		User user = (User) session.getAttribute("user");
 		
-		return "index";
+		oldPassword = userService.encode(oldPassword, user.getSalt());
+		//判断旧密码是否正确
+		if(oldPassword.equals(user.getPassword())) {
+			System.out.println(oldPassword);
+			newPassword = userService.encode(newPassword, user.getSalt());//加盐
+			user.setPassword(newPassword);
+			userService.updatePasswordById(user);
+			return "success";
+		}
+		return "fail";
 	}
 }

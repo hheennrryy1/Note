@@ -2,7 +2,11 @@
 
 <@l.htmlHead "更改密码">
 	<script src="${path}/js/public/validator.min.js"></script>
+	<script src="${path}/js/public/hashes.js"></script>
 	<script src="${path}/js/my/password.js"></script>
+	<script>
+		var path = "${path}";
+	</script>
 </@l.htmlHead>
 
 <@l.htmlBody>
@@ -11,7 +15,7 @@
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
-					<input type="password" class="form-control" name="password" id="password" 
+					<input type="password" class="form-control" name="oldPassword" id="oldPassword" 
 						placeholder="旧密码" required="required"/>
 				</div>
 			</div>
@@ -37,7 +41,9 @@
 				<div class="help-block with-errors"></div>
 				
 			</div>
-		
+			
+			<div id="message-block"></div>
+			
 			<button type="submit" class="btn btn-primary btn-block">提交</button>
 		</form>
 	</div>

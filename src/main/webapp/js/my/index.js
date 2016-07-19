@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$("#main-nav li:eq(0)").addClass("active");
+	$("#main-nav > li:eq(0)").addClass("active");
 	
 	$('#summernote').summernote({
 	  height: 500,                 // set editor height

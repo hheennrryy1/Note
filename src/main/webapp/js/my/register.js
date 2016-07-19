@@ -1,6 +1,7 @@
 $(document).ready(function() {
-		$('#myForm').validator().on('submit', function (e) {
+			$('#myForm').validator().on('submit', function (e) {
 			  if (e.isDefaultPrevented()) {
+				  
 			  } else {
 				  var SHA512 = new Hashes.SHA512();	
 				  var username = $("#username").val();
