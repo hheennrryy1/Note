@@ -18,4 +18,15 @@ public class NotebookService {
 		return mapper.selectByUserId(id);
 	}
 	
+	public Notebook selectByname(String name) {
+		return mapper.selectByName(name);
+	}
+	
+	public int insert(Notebook notebook) {
+		return mapper.insert(notebook);
+	}
+	
+	public int delete(Integer id) {
+		return mapper.deleteById(id);
+	}
 }

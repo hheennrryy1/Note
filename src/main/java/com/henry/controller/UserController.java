@@ -20,11 +20,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/test")
-	public void test(String username) {
-		System.out.println(username);
-	}
-	
 	@RequestMapping("/register")
 	@ResponseBody
 	public String register(User user) throws UnsupportedEncodingException {
@@ -85,7 +80,6 @@ public class UserController {
 		oldPassword = userService.encode(oldPassword, user.getSalt());
 		//判断旧密码是否正确
 		if(oldPassword.equals(user.getPassword())) {
-			System.out.println(oldPassword);
 			newPassword = userService.encode(newPassword, user.getSalt());//加盐
 			user.setPassword(newPassword);
 			userService.updatePasswordById(user);

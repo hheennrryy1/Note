@@ -4,9 +4,6 @@
 	<script src="${path}/js/public/validator.min.js"></script>
 	<script src="${path}/js/public/hashes.js"></script>
 	<script src="${path}/js/my/password.js"></script>
-	<script>
-		var path = "${path}";
-	</script>
 </@l.htmlHead>
 
 <@l.htmlBody>

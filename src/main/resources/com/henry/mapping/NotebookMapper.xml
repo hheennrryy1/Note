@@ -12,18 +12,39 @@
 		</association>
 	</resultMap>
 	
+	<sql id="Base_Column_List" >
+		u.id,u.username,nb.nbid,nb.name,nb.createtime
+	</sql>
+	
  	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 	    select 
-	    u.id,u.username,nb.nbid,nb.name,nb.createtime
+  	     <include refid="Base_Column_List"></include>
 	    from user u, notebook nb
-	    where nb.user_id = u.id and nb.nbid = #{nbid,jdbcType=INTEGER}
+	     where nb.user_id = u.id and nb.nbid = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+	    select 
+  	     <include refid="Base_Column_List"></include>
+	    from user u, notebook nb
+	     where nb.user_id = u.id and nb.name = #{name,jdbcType=VARCHAR}
 	</select>
 	
 	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
-		u.id,u.username,nb.nbid,nb.name,nb.createtime
+		 <include refid="Base_Column_List"></include>
 		from user u, notebook nb
-		where nb.user_id = u.id and nb.user_id = #{id,jdbcType=INTEGER}
+		 where nb.user_id = u.id and nb.user_id = #{id,jdbcType=INTEGER}
 	</select>
 	
+	<insert id="insert" parameterType="Notebook">
+		insert into notebook 
+		 (name, createtime, user_id)
+		values (#{name,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{user.id,jdbcType=INTEGER})
+	</insert>	
+	
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from notebook
+		where nbid = #{id,jdbcType=INTEGER}
+	</delete>
 </mapper>
