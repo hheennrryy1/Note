@@ -27,10 +27,16 @@ public class NotebookDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void selectByUserId() {
 		List<Notebook> notebooks = mapper.selectByUserId(2);
 		for(Notebook nb : notebooks) {
 			System.out.println(nb.getUser().getUsername());
 		}
+	}
+	
+	@Test
+	public void selectNotesById() {
+		mapper.selectNotesById(1);
 	}
 }

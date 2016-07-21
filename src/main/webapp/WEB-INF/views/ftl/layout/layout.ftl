@@ -25,11 +25,11 @@
 <body>
 
 	<div class="navbar navbar-static-top" role="navigation">
-	        <div class="container-fluid">
-	            <div class="navbar-header">
-	                <a class="navbar-brand" href="javascript:void(0)" id="logo">NOTE</a>
-	            </div>
-	        </div>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:void(0)" id="logo">NOTE</a>
+            </div>
+        </div>
 	</div>
 	
     <div class="container-fluid">
@@ -64,23 +64,23 @@
 						<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 							<div class="modal-dialog" role="document">
 							    <div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											<h4 class="modal-title" id="myModalLabel">创建笔记本</h4>
-										</div>
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">创建笔记本</h4>
+									</div>
+									
+									<div class="modal-body form-group" id="inputName">
+							        	<input type="text" name="name" id="name" class="form-control input-lg" placeholder="给笔记本起个名称" required="required">
+									</div>
+									
+									<div class="text-center" id="insertFail">
 										
-										<div class="modal-body form-group" id="inputName">
-								        	<input type="text" name="name" id="name" class="form-control input-lg" placeholder="给笔记本起个名称" required="required">
-										</div>
-										
-										<div class="text-center" id="insertFail">
-											
-										</div>
-								        	
-										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-											<button type="button" class="btn btn-primary" id="insertButton">创建笔记本</button>
-										</div>
+									</div>
+							        	
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+										<button type="button" class="btn btn-primary" id="insertButton">创建笔记本</button>
+									</div>
 								</div>
 							</div>
 						</div>

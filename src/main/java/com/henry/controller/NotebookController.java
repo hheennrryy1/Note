@@ -53,4 +53,12 @@ public class NotebookController {
 		notebookService.delete(id);
 		return "redirect:/notebook/list/" + user.getId();
 	}
+	
+	@RequestMapping("/noteList/{id}")
+	public ModelAndView noteList(@PathVariable Integer id, ModelAndView mav) {
+		mav.setViewName("noteList");
+		Notebook notebook = notebookService.selectNotesById(id);
+		mav.addObject("notebook", notebook);
+		return mav;
+	}
 }

@@ -12,6 +12,8 @@ public interface NotebookMapper {
 	
 	List<Notebook> selectByUserId(Integer id);
 	
+	Notebook selectNotesById(Integer id);
+	
 	int insert(Notebook notebook);
 	
 	int deleteById(Integer id);

@@ -1,12 +1,7 @@
 <#import "layout/layout.ftl" as l>
 
 <@l.htmlHead "笔记本">
-<script>
-	$(document).ready(function(){
-		$("#notebookSetting").collapse();
-		$("#main-nav > li:eq(2)").addClass("active");
-	})
-</script>
+<script src="${path}/js/my/noteBookList.js"></script>
 <style>
  	#notebookList li:hover {
 		background-color:#2980B9;
@@ -19,7 +14,9 @@
 		<ul class="list-group" id="notebookList">
 			<#list notebooks as notebook>
 				<li class="list-group-item">
-					<a href="#"><h4 class="list-group-item-heading">${notebook.name}</h4></a>
+					<a href="${path}/notebook/noteList/${notebook.id}">
+						<h4 class="list-group-item-heading"><i class="fa fa-book"></i>${notebook.name}</h4>
+					</a>
 					<p class="list-group-item-text">共?条笔记</p>
 					<p class="list-group-item-text">
 						创建于${notebook.createtime?datetime}
@@ -52,10 +49,5 @@
 				<br />
 			</#list>
 		</ul>
-		
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-  			<span aria-hidden="true">&times;</span>
-		</button>
-		
 	</div>
 </@l.htmlBody>

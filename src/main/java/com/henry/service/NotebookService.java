@@ -22,6 +22,10 @@ public class NotebookService {
 		return mapper.selectByName(name);
 	}
 	
+	public Notebook selectNotesById(Integer id) {
+		return mapper.selectNotesById(id);
+	}
+	
 	public int insert(Notebook notebook) {
 		return mapper.insert(notebook);
 	}
