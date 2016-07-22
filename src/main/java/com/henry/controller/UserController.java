@@ -15,7 +15,7 @@ import com.henry.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController{
 	
 	@Autowired
 	private UserService userService;

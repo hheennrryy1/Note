@@ -12,11 +12,8 @@ public class Note {
     private String content;
     
     private byte status;
-    
 
 	private Notebook notebook;
-    
-    private User user;
     
     public Note(){}
 
@@ -65,13 +62,5 @@ public class Note {
 
 	public void setNotebook(Notebook notebook) {
 		this.notebook = notebook;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 }

@@ -28,6 +28,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="javascript:void(0)" id="logo">NOTE</a>
+                ${Session.user}
             </div>
         </div>
 	</div>
@@ -72,7 +73,7 @@
 					           	<i class="fa fa-sticky-note fa-fw"></i>笔记
                         </a>
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="#">笔记</a></li>
+                            <li><a href="#">笔记列表</a></li>
                             <li><a href="#">笔记</a></li>
                             <li><a href="#">废纸篓</a></li>
                         </ul>

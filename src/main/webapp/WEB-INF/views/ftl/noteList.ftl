@@ -6,12 +6,12 @@
 
 <@l.htmlBody>
 	<div class="container">
-		<h1 class="text-center"><i class="fa fa-book"></i>${notebook.name} <small>${notebook.name}</small></h1>
+		<h1 class="text-center"><i class="fa fa-book"></i>${notebook.name!("笔记本为空")} <small>${notebook.name}</small></h1>
 		
 		<ul class="list-group" id="notebookList">
 			<#list notebook.notes as note>
 				<li class="list-group-item">
-					<a href="#">
+					<a href="${path}/note/select/${note.id}">
 						<h4 class="list-group-item-heading">
 							<i class="fa fa-sticky-note"></i>
 							${note.title}

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.henry.entity.Note;
 import com.henry.service.NoteService;
 
 @Controller
@@ -23,9 +24,17 @@ public class NoteController {
 	 * @param nbid notebook的id 用于更新状态后的跳转
 	 * @return
 	 */
-	@RequestMapping(value="/update/{id}")
+	@RequestMapping("/update/{id}")
 	public String updateStatus(@PathVariable Integer id, @RequestParam("nbid") Integer nbid) {
 		noteService.updateStatusById(id);
 		return "redirect:/notebook/noteList/" + nbid;
+	}
+	
+	@RequestMapping("/select/{id}")
+	public ModelAndView select(ModelAndView mav, @PathVariable Integer id) {
+		mav.setViewName("note");
+		Note note = noteService.selectById(id);
+		mav.addObject("note", note);
+		return mav;
 	}
 }
