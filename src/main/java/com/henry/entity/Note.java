@@ -6,12 +6,15 @@ public class Note {
     private Integer id;
 
     private String title;
-
+    
     private Date updatetime;
 
     private String content;
     
-    private Notebook notebook;
+    private byte status;
+    
+
+	private Notebook notebook;
     
     private User user;
     
@@ -47,6 +50,13 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
+    }
+    public byte getStatus() {
+    	return status;
+    }
+    
+    public void setStatus(byte status) {
+    	this.status = status;
     }
 
 	public Notebook getNotebook() {

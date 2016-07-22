@@ -14,4 +14,8 @@ public class NoteService {
 	public int deleteById(Integer id) {
 		return mapper.deleteById(id);
 	}
+	
+	public int updateStatusById(Integer id) {
+		return mapper.updateStatusById(id);
+	}
 }

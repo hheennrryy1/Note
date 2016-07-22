@@ -60,31 +60,6 @@
                             <li><a href="${path}/notebook" data-toggle="modal" data-target="#insertModal">创建笔记本</a></li>
                             
                             
-                        <#--模态框-->
-						<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-							<div class="modal-dialog" role="document">
-							    <div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">创建笔记本</h4>
-									</div>
-									
-									<div class="modal-body form-group" id="inputName">
-							        	<input type="text" name="name" id="name" class="form-control input-lg" placeholder="给笔记本起个名称" required="required">
-									</div>
-									
-									<div class="text-center" id="insertFail">
-										
-									</div>
-							        	
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-										<button type="button" class="btn btn-primary" id="insertButton">创建笔记本</button>
-									</div>
-								</div>
-							</div>
-						</div>
-                        <#---->    
                             
                             <li><a href="#">笔记</a></li>
                             <li><a href="#">笔记</a></li>
@@ -99,9 +74,7 @@
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li><a href="#">笔记</a></li>
                             <li><a href="#">笔记</a></li>
-                            <li><a href="#">笔记</a></li>
-                            <li><a href="#">笔记</a></li>
-                            <li><a href="#">笔记</a></li>
+                            <li><a href="#">废纸篓</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -109,6 +82,32 @@
 			<#nested>
         </div>
     </div>
+    
+    <#--模态框-->
+	<div class="modal fade" id="insertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">创建笔记本</h4>
+				</div>
+				
+				<div class="modal-body form-group" id="inputName">
+		        	<input type="text" name="name" id="name" class="form-control input-lg" placeholder="给笔记本起个名称" required="required">
+				</div>
+				
+				<div class="text-center" id="insertFail">
+					
+				</div>
+		        	
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="insertButton">创建笔记本</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <#---->    
 </body>
 </html>
 </#macro>

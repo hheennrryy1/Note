@@ -7,4 +7,9 @@
 		where nid = #{id, jdbcType=INTEGER}
 	</delete>
 	
+	<update id="updateStatusById" parameterType="java.lang.Integer">
+		update note
+		set status = 0
+		where nid = #{id,jdbcType=INTEGER} 
+	</update>
 </mapper>

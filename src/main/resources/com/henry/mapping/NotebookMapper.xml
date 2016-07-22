@@ -52,7 +52,7 @@
 		select
 		nb.nbid,nb.name,n.nid,n.title,n.updatetime	 
 		from notebook nb, note n
-		where nb.nbid = n.notebook_id and nb.nbid = #{id,jdbcType=INTEGER}
+		where nb.nbid = n.notebook_id and nb.nbid = #{id,jdbcType=INTEGER} and n.status = 1
 	</select>
 		
 	<insert id="insert" parameterType="Notebook">
