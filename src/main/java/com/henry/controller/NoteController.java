@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.henry.entity.Note;
@@ -24,7 +25,7 @@ public class NoteController {
 	 * @param nbid notebook的id 用于更新状态后的跳转
 	 * @return
 	 */
-	@RequestMapping("/update/{id}")
+	@RequestMapping("/updateStatus/{id}")
 	public String updateStatus(@PathVariable Integer id, @RequestParam("nbid") Integer nbid) {
 		noteService.updateStatusById(id);
 		return "redirect:/notebook/noteList/" + nbid;
@@ -37,4 +38,15 @@ public class NoteController {
 		mav.addObject("note", note);
 		return mav;
 	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String update(Note note) {
+		int i = noteService.updateByIdSelective(note);
+		if(i>0) {
+			return "success";
+		}
+		return "fail";
+	}
+	
 }

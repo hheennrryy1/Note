@@ -17,7 +17,13 @@ public class Note {
     
     public Note(){}
 
-    public Integer getId() {
+    @Override
+	public String toString() {
+		return "Note [id=" + id + ", title=" + title + ", updatetime=" + updatetime + ", content=" + content
+				+ ", status=" + status + ", notebook=" + notebook + "]";
+	}
+
+	public Integer getId() {
 		return id;
 	}
 

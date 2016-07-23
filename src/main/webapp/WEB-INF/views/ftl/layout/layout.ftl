@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="javascript:void(0)" id="logo">NOTE</a>
-                ${Session.user}
+                <p class="navbar-text" style="color: #ECF0F1;">${Session.user.username}</p>
             </div>
         </div>
 	</div>

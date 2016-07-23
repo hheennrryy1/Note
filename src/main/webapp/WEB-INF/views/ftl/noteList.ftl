@@ -19,7 +19,7 @@
 					</a>
 					<p class="list-group-item-text">
 						最新修改于${note.updatetime?datetime}
-						<a href="${path}/note/update/${note.id}?nbid=${notebook.id}" style="display: none;"></a>
+						<a href="${path}/note/updateStatus/${note.id}?nbid=${notebook.id}" style="display: none;"></a>
 						&nbsp;&nbsp;<a class="updateStatus"><i class="fa fa-trash fa-lg"></i></a>
 					</p>
 				</li>

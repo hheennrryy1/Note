@@ -43,6 +43,7 @@ public class UserController{
 		password = userService.encode(password, user.getSalt()); //加盐 
 		if(user.getPassword().equals(password)) {
 			status = 1;//正确登录
+			session.setMaxInactiveInterval(60*30);//30分钟
 			session.setAttribute("user", user);
 		}
 		return status;
