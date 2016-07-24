@@ -36,7 +36,14 @@ public class NotebookDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void selectNotesById() {
 		mapper.selectNotesById(1);
+	}
+	
+	@Test
+	public void count() {
+		int i = mapper.countNotesById(8);
+		System.out.println(i);
 	}
 }

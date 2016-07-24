@@ -2,6 +2,13 @@ $(document).ready(function(){
 	$("#notebookSetting").collapse();
 	$("#main-nav > li:eq(2)").addClass("active");
 	
+	var nbid = $("input[class='input']");
+	
+	for(var i=0; i<nbid.length; i++) {
+		var val = nbid.val();
+		alert(val[i]);
+	}
+	
 	$(".delete").click(function() {
 		var href = $(this).prev("a").attr("href");
 		var name = $(this).parent().prevAll("a").children().text();

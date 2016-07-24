@@ -22,6 +22,10 @@ public class NotebookService {
 		return mapper.selectByName(name);
 	}
 	
+	public int countNotesById(Integer id) {
+		return mapper.countNotesById(id);
+	}
+	
 	public Notebook selectNotesById(Integer id) {
 		return mapper.selectNotesById(id);
 	}

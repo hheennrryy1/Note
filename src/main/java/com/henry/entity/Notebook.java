@@ -14,7 +14,10 @@ public class Notebook {
     
     private List<Note> notes;
     
-    public Notebook(){};
+    //note数，方便在笔记本列表显示笔记数，不持久化
+    private int count;
+
+	public Notebook(){};
 
     public Integer getId() {
 		return id;
@@ -56,5 +59,13 @@ public class Notebook {
 
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

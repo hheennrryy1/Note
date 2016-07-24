@@ -7,6 +7,7 @@
 		<result column="title" property="title" jdbcType="VARCHAR"/>
 		<result column="content" property="content" jdbcType="VARCHAR"/>
 		<result column="status" property="status" jdbcType="TINYINT"/>
+		<result column="createtime" property="createtime" jdbcType="TIMESTAMP"/>
 		<result column="updatetime" property="updatetime" jdbcType="TIMESTAMP"/>
 		<association property="notebook" javaType="Notebook">
 			<id column="nbid" property="id" jdbcType="INTEGER"/>
@@ -16,7 +17,7 @@
 	
 	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select nb.nbid,nb.name,
-				n.nid,n.title,n.content,n.updatetime,n.status
+				n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
 		from notebook nb,note n
 		where nb.nbid = n.notebook_id and n.nid = #{id, jdbcType=INTEGER}
 	</select>

@@ -14,10 +14,21 @@ $(document).ready(function() {
 		//alert("input");
 	});
 	
-	$("button").click(function() {
+	$("#updateButton").click(function() {
 		var url = $("form").attr("action");
 		$.post(url, $("form").serialize(), function(data) {
-			alert(data);
+			if(data==="success") {
+				var success = $("#success");
+				success.text("更新成功");
+				success.fadeIn("slow");
+				setTimeout(function(){success.fadeOut("slow");}, 3000);
+			}
+			if(data==="fail") {
+				var danger = $("#danger");
+				danger.text("更新失败");
+				danger.fadeIn("slow");
+				danger.fadeOut("slow");
+			}
 		});
 		
 	});

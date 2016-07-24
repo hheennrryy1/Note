@@ -27,6 +27,7 @@ public class NotebookController {
 	public ModelAndView list(ModelAndView mav, @PathVariable Integer id) {
 		mav.setViewName("notebookList");
 		List<Notebook> notebooks = notebookService.selectByUserId(id);
+		int count = notebookService.countNotesById(id);
 		mav.addObject("notebooks", notebooks);
 		return mav;
 	}

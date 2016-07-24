@@ -7,7 +7,9 @@ public class Note {
 
     private String title;
     
-    private Date updatetime;
+    private Date createtime;
+    
+	private Date updatetime;
 
     private String content;
     
@@ -39,6 +41,14 @@ public class Note {
         this.title = title == null ? null : title.trim();
     }
 
+    public Date getCreatetime() {
+    	return createtime;
+    }
+    
+    public void setCreatetime(Date createtime) {
+    	this.createtime = createtime;
+    }
+    
     public Date getUpdatetime() {
         return updatetime;
     }

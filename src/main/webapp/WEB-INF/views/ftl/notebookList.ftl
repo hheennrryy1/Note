@@ -17,7 +17,10 @@
 					<a href="${path}/notebook/noteList/${notebook.id}">
 						<h4 class="list-group-item-heading"><i class="fa fa-book"></i>${notebook.name}</h4>
 					</a>
-					<p class="list-group-item-text">共?条笔记</p>
+					
+					<p class="list-group-item-text"></p>
+					<input type="text" name="id" class="input" value="${notebook.id}" style="display: none;"/>
+					
 					<p class="list-group-item-text">
 						创建于${notebook.createtime?datetime}
 						<a href="${path}/notebook/delete/${notebook.id}" style="display: none;"></a>

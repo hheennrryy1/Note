@@ -12,6 +12,7 @@
 		<script src="${path}/js/my/layout.js"></script>
 		<script>
 			var path = "${path}";
+			var id = "${Session.user.id}";
 		</script>
 		<link rel="stylesheet" href="${path}/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="${path}/css/flat-ui.min.css" />

@@ -6,6 +6,7 @@
 		<id column="nbid" property="id" jdbcType="INTEGER"/>
 		<result column="name" property="name" jdbcType="VARCHAR"/>
 		<result column="createtime" property="createtime" jdbcType="TIMESTAMP"/>
+		<result column="count" property="count"/>
 		<association property="user" javaType="User">
 			<id column="id" property="id" jdbcType="INTEGER"/>
 			<result column="username" property="username" jdbcType="VARCHAR"/>
@@ -32,9 +33,13 @@
 	
 	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
 		select
-		<include refid="Base_Column_List"></include>
+		<include refid="Base_Column_List"></include> 
 		from user u, notebook nb
 		where nb.user_id = u.id and nb.user_id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="countNotesById" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+		 select count(*) from notebook nb,note n where nb.nbid = n.notebook_id and nb.nbid = #{id, jdbcType=INTEGER}
 	</select>
 	
 	<!-- 用于一对多查询notebook下的note-->
