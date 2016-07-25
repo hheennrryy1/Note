@@ -48,8 +48,16 @@
 					    	<i class="fa fa-user fa-fw"></i>用户管理
                         </a>
                         <ul id="userSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="${path}/user/password">修改密码</a></li>
-                            <li><a href="${path}/user/logout">登出</a></li>
+                            <li>
+	                            <a href="${path}/user/password">
+									<i class="fa fa-key"></i>修改密码
+	                            </a>
+                            </li>
+                            <li>
+	                            <a href="${path}/user/logout">
+									<i class="fa fa-sign-out"></i>登出
+	                            </a>
+                            </li>
                         </ul>
                     </li>
                     
@@ -58,8 +66,17 @@
 					    	<i class="fa fa-book fa-fw"></i>笔记本管理
                         </a>
                         <ul id="notebookSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="${path}/notebook/list/${Session.user.id}">笔记本列表</a></li>
-                            <li><a href="${path}/notebook" data-toggle="modal" data-target="#insertModal">创建笔记本</a></li>
+                            <li>
+                            	<a href="${path}/notebook/list/${Session.user.id}">
+                         		   <i class="fa fa-sign-out"></i>笔记本列表
+                            	</a>
+                            </li>
+                            
+                            <li>
+	                            <a href="${path}/notebook" data-toggle="modal" data-target="#insertModal">
+	                            	<i class="fa fa-book fa-fw"></i>创建笔记本
+	                            </a>
+                            </li>
                             
                             
                             
@@ -74,9 +91,21 @@
 					           	<i class="fa fa-sticky-note fa-fw"></i>笔记
                         </a>
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
-                            <li><a href="#">笔记列表</a></li>
-                            <li><a href="#">笔记</a></li>
-                            <li><a href="#">废纸篓</a></li>
+                            <li>
+                            	<a href="#">
+                            		<i class="fa fa-list"></i>笔记列表
+                            	</a>
+                            </li>
+                            <li>
+                            	<a href="#">
+                            		<i class="fa fa-pencil"></i>创建笔记
+                            	</a>
+                            </li>
+                            <li>
+	                            <a href="#">
+	                            	<i class="fa fa-trash-o"></i>废纸篓
+	                            </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>

@@ -1,16 +1,18 @@
 package com.henry.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.henry.entity.Notebook;
 import com.henry.entity.User;
+import com.henry.service.NotebookService;
 import com.henry.service.UserService;
 
 @Controller
@@ -19,7 +21,12 @@ public class UserController{
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private NotebookService notebookService;
 	
+	/**
+	 * 注册
+	 */
 	@RequestMapping("/register")
 	@ResponseBody
 	public String register(User user) throws UnsupportedEncodingException {
@@ -28,9 +35,16 @@ public class UserController{
 			return "fail";//用户名已存在
 		}
 		userService.insert(user);
+		//注册成功创建一个默认的笔记本
+		int id = userService.selectIdByUsername(user.getUsername());
+		user.setId(id);
+		notebookService.insert(new Notebook(user.getUsername() + "的笔记本", new Date(), user));
 		return "success";
 	}
 	
+	/**
+	 * 登录
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public int login(String username, String password, HttpSession session) throws UnsupportedEncodingException {
@@ -49,6 +63,9 @@ public class UserController{
 		return status;
 	}
 	
+	/**
+	 * 登出
+	 */
 	@RequestMapping("logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
@@ -57,7 +74,6 @@ public class UserController{
 	
 	/**
 	 * 转向到首页
-	 * @return
 	 */
 	@RequestMapping("/index")
 	public String index() {
@@ -66,7 +82,6 @@ public class UserController{
 	
 	/**
 	 * 转向到修改密码的页面
-	 * @return
 	 */
 	@RequestMapping("/password")
 	public String password() {

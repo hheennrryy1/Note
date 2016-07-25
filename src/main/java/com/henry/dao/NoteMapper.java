@@ -11,4 +11,6 @@ public interface NoteMapper {
 	int deleteById(Integer id);
 	
 	int updateByIdSelective(Note note);
+	
+	int insertSelective(Note note);
 }

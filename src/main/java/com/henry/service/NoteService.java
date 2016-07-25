@@ -27,4 +27,8 @@ public class NoteService {
 	public int updateByIdSelective(Note note) {
 		return mapper.updateByIdSelective(note);
 	}
+	
+	public int insertSelective(Note note) {
+		return mapper.insertSelective(note);
+	}
 }

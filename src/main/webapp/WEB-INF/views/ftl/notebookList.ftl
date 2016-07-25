@@ -19,7 +19,7 @@
 					</a>
 					
 					<p class="list-group-item-text"></p>
-					<input type="text" name="id" class="input" value="${notebook.id}" style="display: none;"/>
+					<input type="text" name="id" value="${notebook.id}" style="display: none;"/>
 					
 					<p class="list-group-item-text">
 						创建于${notebook.createtime?datetime}

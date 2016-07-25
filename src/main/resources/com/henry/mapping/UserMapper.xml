@@ -26,6 +26,10 @@
   	where username = #{username,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectIdByUsername" resultType="java.lang.Integer" parameterType="java.lang.String">
+  	select id from user where username = #{username, jdbcType=VARCHAR} 
+  </select>
+  
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}

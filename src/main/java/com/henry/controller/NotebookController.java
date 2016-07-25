@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,19 +27,28 @@ public class NotebookController {
 	@RequestMapping("/list/{id}")
 	public ModelAndView list(ModelAndView mav, @PathVariable Integer id) {
 		mav.setViewName("notebookList");
-		List<Notebook> notebooks = notebookService.selectByUserId(id);
-		int count = notebookService.countNotesById(id);
+		Notebook notebook = new Notebook();
+		//根据用户的id查
+		notebook.setUser(new User(id, null));
+		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
 		mav.addObject("notebooks", notebooks);
 		return mav;
+	}
+	
+	@RequestMapping("/count")
+	@ResponseBody
+	public Integer count(ModelAndView mav, Integer id) {
+		return notebookService.countNotesById(id);
 	}
 	
 	@RequestMapping("/insert")
 	@ResponseBody
 	public String insert(Notebook notebook, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		
-		Notebook nbk = notebookService.selectByname(notebook.getName());
-		if(nbk!=null) {
+		//根据名字查
+		notebook.setUser(new User());
+		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
+		if(!notebooks.isEmpty()) {
 			return "fail";
 		}
 		notebook.setCreatetime(new Date());

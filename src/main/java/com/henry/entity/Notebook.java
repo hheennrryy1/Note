@@ -18,8 +18,15 @@ public class Notebook {
     private int count;
 
 	public Notebook(){};
+	
+	public Notebook(String name, Date createtime, User user) {
+		super();
+		this.name = name;
+		this.createtime = createtime;
+		this.user = user;
+	}
 
-    public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 

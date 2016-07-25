@@ -2,12 +2,18 @@ $(document).ready(function(){
 	$("#notebookSetting").collapse();
 	$("#main-nav > li:eq(2)").addClass("active");
 	
-	var nbid = $("input[class='input']");
+	var nbid = $("input[name='id']");
 	
-	for(var i=0; i<nbid.length; i++) {
-		var val = nbid.val();
-		alert(val[i]);
-	}
+	nbid.each(function(index, element) {
+		var args = {
+			id : $(this).val()
+		};
+		
+		$.getJSON(path + "/notebook/count", args, function(data) {
+			$(nbid[index]).prev("p").text("共有" + data + "条笔记");
+		});
+		
+	});
 	
 	$(".delete").click(function() {
 		var href = $(this).prev("a").attr("href");

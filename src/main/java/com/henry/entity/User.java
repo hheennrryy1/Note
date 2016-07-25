@@ -15,12 +15,19 @@ public class User {
     
 	public User() {}
 
+	public User(Integer id, String username) {
+		super();
+		this.id = id;
+		this.username = username;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", salt=" + salt + "]";
 	}
+	
 
-    public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 

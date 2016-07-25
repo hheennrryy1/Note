@@ -13,5 +13,7 @@ public interface UserMapper {
     
     User selectByUsername(String username);
     
+    int selectIdByUsername(String username);
+    
     int updatePasswordById(User user);
 }

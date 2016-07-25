@@ -22,6 +22,10 @@ public class NotebookService {
 		return mapper.selectByName(name);
 	}
 	
+	public List<Notebook> selectiveSelect(Notebook notebook) {
+		return mapper.selectiveSelect(notebook);
+	}
+	
 	public int countNotesById(Integer id) {
 		return mapper.countNotesById(id);
 	}

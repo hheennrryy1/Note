@@ -28,6 +28,10 @@ public class UserService {
 		return mapper.selectByUsername(username);
 	}
 	
+	public int selectIdByUsername(String username) {
+		return mapper.selectIdByUsername(username);
+	}
+	
 	public int updatePasswordById(User user) {
 		return mapper.updatePasswordById(user);
 	}
