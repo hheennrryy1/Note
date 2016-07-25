@@ -31,12 +31,6 @@ public class UserDaoTest {
 	}
 	
 	@Test
-	public void select() {
-		User user = mapper.selectByUsername("test");
-		System.out.println(user);
-	}
-	
-	@Test
 	@Ignore
 	public void delete() {
 		mapper.deleteById(1);

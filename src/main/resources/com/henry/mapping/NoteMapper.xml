@@ -22,9 +22,11 @@
 		where nb.nbid = n.notebook_id and n.nid = #{id, jdbcType=INTEGER}
 	</select>
 	
-<!-- 	<select id="selectByStatusAndId">
-		select 
-	</select> -->
+  	<select id="selectByStatusAndUserId" parameterType="Note" resultMap="BaseResultMap">
+		select n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
+		from note n
+		where n.status = #{status, jdbcType=TINYINT} and n.user_id = #{user.id,jdbcType=INTEGER}
+	</select>
 	
 	<delete id="deleteById" parameterType="java.lang.Integer">
 		delete from note

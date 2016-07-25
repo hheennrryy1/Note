@@ -1,6 +1,7 @@
 package com.henry.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.henry.entity.Note;
+import com.henry.entity.User;
 import com.henry.service.NoteService;
 
 @Controller
@@ -52,4 +54,12 @@ public class NoteController {
 		return "fail";
 	}
 	
+	@RequestMapping("/list/{userId}")
+	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId, @RequestParam Byte status) {
+		Note note = new Note(status, new User(userId, null));
+		List<Note> notes = noteService.selectByStatusAndUserId(note);
+		mav.addObject("notes", notes);
+		mav.setViewName("allNoteList");
+		return mav;
+	}
 }

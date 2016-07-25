@@ -22,22 +22,6 @@ public class NotebookDaoTest {
 	
 	@Test
 	@Ignore
-	public void select() {
-		Notebook notebook = mapper.selectById(1);
-		System.out.println(notebook.getUser().getUsername());
-	}
-	
-	@Test
-	@Ignore
-	public void selectByUserId() {
-		List<Notebook> notebooks = mapper.selectByUserId(2);
-		for(Notebook nb : notebooks) {
-			System.out.println(nb.getUser().getUsername());
-		}
-	}
-	
-	@Test
-	@Ignore
 	public void selectNotesById() {
 		mapper.selectNotesById(1);
 	}
@@ -52,10 +36,7 @@ public class NotebookDaoTest {
 	@Test
 	public void selective() {
 		Notebook nb = new Notebook();
-		User user = new User();
-		user.setId(1);
-		nb.setUser(user);
-		//nb.setId(6);
+		nb.setId(6);
 		List<Notebook> notebooks = mapper.selectiveSelect(nb);
 		System.out.println(notebooks);
 	}

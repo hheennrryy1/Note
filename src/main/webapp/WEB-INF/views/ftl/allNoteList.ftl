@@ -1,7 +1,21 @@
 <#import "layout/layout.ftl" as l>
 
-<@l.htmlHead "笔记列表">
-		<script src="${path}/js/my/noteList.js"></script>
+<@l.htmlHead "所有列表">
+		<script>
+			$(document).ready(function(){
+				$("#noteSetting").collapse();
+				$("#main-nav > li:eq(3)").addClass("active");
+				
+				
+				$(".updateStatus").click(function() {
+					var href = $(this).prev("a").attr("href");
+					var name = $(this).parent().prevAll("a").children().text();
+					$("#modal-body").text("确定删除" + name + "吗？");
+					$("#modal-footer > a").attr("href", href);
+					$("#deleteModal").modal();
+				});
+			})
+		</script>
 		<style>
 		 	.list-group li:hover {
 				background-color:#BDC3C7;
@@ -11,10 +25,10 @@
 
 <@l.htmlBody>
 	<div class="container">
-		<h1 class="text-center"><i class="fa fa-book"></i>${notebook.name!("笔记本为空")} <small>${notebook.name}</small></h1>
+		<h1 class="text-center"><i class="fa fa-list"></i>所有笔记 <small>所有笔记</small></h1>
 		
 		<ul class="list-group" id="notebookList">
-			<#list notebook.notes as note>
+			<#list notes as note>
 				<li class="list-group-item">
 					<a href="${path}/note/select/${note.id}">
 						<h4 class="list-group-item-heading">

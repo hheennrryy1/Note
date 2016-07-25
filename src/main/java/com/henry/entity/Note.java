@@ -13,13 +13,21 @@ public class Note {
 
     private String content;
     
-    private byte status;
+    private Byte status;
 
 	private Notebook notebook;
-    
-    public Note(){}
+	
+	private User user;
 
-    @Override
+	public Note(){}
+
+    public Note(Byte status, User user) {
+		super();
+		this.status = status;
+		this.user = user;
+	}
+
+	@Override
 	public String toString() {
 		return "Note [id=" + id + ", title=" + title + ", updatetime=" + updatetime + ", content=" + content
 				+ ", status=" + status + ", notebook=" + notebook + "]";
@@ -64,19 +72,28 @@ public class Note {
     public void setContent(String content) {
         this.content = content == null ? null : content.trim();
     }
-    public byte getStatus() {
+    
+    public Byte getStatus() {
     	return status;
     }
     
-    public void setStatus(byte status) {
+    public void setStatus(Byte status) {
     	this.status = status;
     }
-
+    
 	public Notebook getNotebook() {
 		return notebook;
 	}
 
 	public void setNotebook(Notebook notebook) {
 		this.notebook = notebook;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

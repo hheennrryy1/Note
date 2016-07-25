@@ -14,14 +14,6 @@ public class NotebookService {
 	@Autowired
 	private NotebookMapper mapper;
 	
-	public List<Notebook> selectByUserId(Integer id) {
-		return mapper.selectByUserId(id);
-	}
-	
-	public Notebook selectByname(String name) {
-		return mapper.selectByName(name);
-	}
-	
 	public List<Notebook> selectiveSelect(Notebook notebook) {
 		return mapper.selectiveSelect(notebook);
 	}

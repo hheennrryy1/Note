@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,7 @@ public class NotebookController {
 	public ModelAndView list(ModelAndView mav, @PathVariable Integer id) {
 		mav.setViewName("notebookList");
 		Notebook notebook = new Notebook();
-		//根据用户的id查
+		//根据用户的id查出全部笔记本
 		notebook.setUser(new User(id, null));
 		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
 		mav.addObject("notebooks", notebooks);
@@ -45,8 +44,7 @@ public class NotebookController {
 	@ResponseBody
 	public String insert(Notebook notebook, HttpSession session) {
 		User user = (User) session.getAttribute("user");
-		//根据名字查
-		notebook.setUser(new User());
+		//根据名字查笔记，以防名字重复
 		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
 		if(!notebooks.isEmpty()) {
 			return "fail";

@@ -1,6 +1,7 @@
 package com.henry.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,12 +25,12 @@ public class UserService {
 		return mapper.insert(user);
 	}
 	
-	public User selectByUsername(String username) {
-		return mapper.selectByUsername(username);
-	}
-	
 	public int selectIdByUsername(String username) {
 		return mapper.selectIdByUsername(username);
+	}
+	
+	public List<User> selectiveSelect(User user) {
+		return mapper.selectiveSelect(user);
 	}
 	
 	public int updatePasswordById(User user) {

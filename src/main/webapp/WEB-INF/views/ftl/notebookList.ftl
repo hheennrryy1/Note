@@ -3,8 +3,8 @@
 <@l.htmlHead "笔记本">
 		<script src="${path}/js/my/noteBookList.js"></script>
 		<style>
-		 	#notebookList li:hover {
-				background-color:#2980B9;
+		 	.list-group li:hover {
+				background-color:#BDC3C7;
 			}
 		</style>
 </@l.htmlHead>

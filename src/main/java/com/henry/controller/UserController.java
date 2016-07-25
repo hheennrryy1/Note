@@ -2,6 +2,7 @@ package com.henry.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,8 +31,8 @@ public class UserController{
 	@RequestMapping("/register")
 	@ResponseBody
 	public String register(User user) throws UnsupportedEncodingException {
-		User u = userService.selectByUsername(user.getUsername());
-		if(u!=null) {
+		List<User> list = userService.selectiveSelect(user);
+		if(!list.isEmpty()) {
 			return "fail";//用户名已存在
 		}
 		userService.insert(user);
@@ -49,11 +50,14 @@ public class UserController{
 	@ResponseBody
 	public int login(String username, String password, HttpSession session) throws UnsupportedEncodingException {
 		int status = 0;//用户名或密码错误
-		User user = userService.selectByUsername(username);
-		if(user==null) {
+		List<User> list = userService.selectiveSelect(new User(null, username));
+		
+		if(list.isEmpty()) {
 			status = -1;//用户不存在
 			return status;
 		}
+		
+		User user = list.get(0);
 		password = userService.encode(password, user.getSalt()); //加盐 
 		if(user.getPassword().equals(password)) {
 			status = 1;//正确登录

@@ -1,5 +1,7 @@
 package com.henry.dao;
 
+import java.util.List;
+
 import com.henry.entity.User;
 
 public interface UserMapper {
@@ -8,10 +10,8 @@ public interface UserMapper {
     int insert(User user);
 
     int insertSelective(User user);
-
-    User selectById(Integer uid);
     
-    User selectByUsername(String username);
+    List<User> selectiveSelect(User user);
     
     int selectIdByUsername(String username);
     

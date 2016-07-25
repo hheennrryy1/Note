@@ -92,8 +92,8 @@
                         </a>
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li>
-                            	<a href="#">
-                            		<i class="fa fa-list"></i>笔记列表
+                            	<a href="${path}/note/list/${Session.user.id}?status=1">
+                            		<i class="fa fa-list"></i>所有笔记
                             	</a>
                             </li>
                             <li>

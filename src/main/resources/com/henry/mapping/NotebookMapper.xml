@@ -17,29 +17,6 @@
 		u.id,u.username,nb.nbid,nb.name,nb.createtime
 	</sql>
 	
- 	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-	    select 
-  	    <include refid="Base_Column_List"></include>
-	    from user u, notebook nb
-	    where nb.user_id = u.id and nb.nbid = #{id,jdbcType=INTEGER}
-	</select>
-	
-	<!-- 用于检测是否重复命名 -->
-	<select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-	    select 
-  	    <include refid="Base_Column_List"></include>
-	    from user u, notebook nb
-	    where nb.user_id = u.id and nb.name = #{name,jdbcType=VARCHAR}
-	</select>
-	
-	<!-- 用于笔记本列表 -->
-	<select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-		select
-		<include refid="Base_Column_List"></include> 
-		from user u, notebook nb
-		where nb.user_id = u.id and nb.user_id = #{id,jdbcType=INTEGER}
-	</select>
-	
 	<select id="selectiveSelect" resultMap="BaseResultMap" parameterType="Notebook">
 		select
 		<include refid="Base_Column_List"></include>
@@ -52,8 +29,10 @@
 			<if test="name != null">
 				and nb.name = #{name,jdbcType=VARCHAR}
 			</if>
-			<if test="user.id != null">
-				and nb.user_id = #{user.id,jdbcType=INTEGER}
+			<if test="user != null">
+				<if test="user.id != null">
+					and nb.user_id = #{user.id,jdbcType=INTEGER}
+				</if>
 			</if>
 		</trim>
 	</select>
