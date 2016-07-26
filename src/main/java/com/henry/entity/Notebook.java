@@ -26,6 +26,12 @@ public class Notebook {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "Notebook [id=" + id + ", name=" + name + ", createtime=" + createtime + ", user=" + user + ", notes="
+				+ notes + ", count=" + count + "]";
+	}
+
 	public Integer getId() {
 		return id;
 	}

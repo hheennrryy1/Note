@@ -50,7 +50,7 @@
 			</if>
 			<if test="notebook != null">
 				<if test="notebook.id != null">
-					nbid = #{nbid, jdbcType=INTEGER},
+					notebook_id = #{notebook.id, jdbcType=INTEGER},
 				</if>
 			</if>
 			<if test="content != null">

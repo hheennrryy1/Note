@@ -18,6 +18,16 @@
 					<i class="fa fa-trash fa-2x"></i>
 				</a>
 				
+				<select name="notebooName" id="notebookName" class="form-control">
+					<#list notebooks as notebook>
+						<option value="${notebook.name}" <#if note.notebook.name == notebook.name>selected</#if>>
+							${notebook.name}
+						</option>
+					</#list>
+				</select>
+				
+				<div class="alert text-center" role="alert" id="updateNbIdMessage" style="display: none;"></div>
+				
 				<input type="hidden" value="${note.id}" name="id"/>
 				
 				<div class="form-group">
@@ -31,10 +41,9 @@
 				<button type="button" class="btn btn-block btn-primary" id="updateButton">更新</button>
 			</form>
 			
-			<div class="alert alert-success text-center" role="alert" id="success" style="display: none;"></div>
-			<div class="alert alert-danger text-center" role="alert" id="danger" style="display: none;"></div>
-	</div>
-	
+			<div class="alert text-center" role="alert" id="updateMessage" style="display: none;"></div>
+	</div>	
+			
 	<#--模态框-->
 	<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
