@@ -29,9 +29,10 @@
 			<if test="name != null">
 				and nb.name = #{name,jdbcType=VARCHAR}
 			</if>
+			<!-- 多对一查询 查出用户的所有笔记本 -->
 			<if test="user != null">
 				<if test="user.id != null">
-					and nb.user_id = #{user.id,jdbcType=INTEGER}
+					and u.id = nb.user_id and u.id = #{user.id,jdbcType=INTEGER}
 				</if>
 			</if>
 		</trim>

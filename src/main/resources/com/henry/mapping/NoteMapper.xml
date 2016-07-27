@@ -16,16 +16,17 @@
 	</resultMap>
 	
 	<select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select nb.nbid,nb.name,
-				n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
-		from notebook nb,note n
+		select nb.nbid, nb.name,
+			n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
+		from note n,notebook nb
 		where nb.nbid = n.notebook_id and n.nid = #{id, jdbcType=INTEGER}
 	</select>
 	
+	<!-- 多对一的方式选择一个用户所有的笔记  -->
   	<select id="selectByStatusAndUserId" parameterType="Note" resultMap="BaseResultMap">
 		select n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
-		from note n
-		where n.status = #{status, jdbcType=TINYINT} and n.user_id = #{user.id,jdbcType=INTEGER}
+		from note n, user u
+		where u.id = n.user_id and n.status = #{status, jdbcType=TINYINT} and n.user_id = #{user.id,jdbcType=INTEGER}
 	</select>
 	
 	<delete id="deleteById" parameterType="java.lang.Integer">
@@ -60,8 +61,8 @@
 		where nid = #{id, jdbcType=INTEGER}
 	</update>
 	
-<!-- 	<insert id="insertSelective" parameterType="Note">
-		insert into notebook
+ 	<insert id="insertSelective" parameterType="Note">
+		insert into note
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="title != null" >
 			     title,
@@ -75,27 +76,48 @@
 			<if test="updatetime != null" >
 				updatetime,
 			</if>
-			<if test="notebook.id != null">
-				notebook_id,
+			<if test="status != null">
+				status,
+			</if>
+			<if test="notebook != null">
+				<if test="notebook.id != null">
+					notebook_id,
+				</if>
+			</if>
+			<if test="user != null">
+				<if test="user.id != null">
+					user_id,
+				</if>
 			</if>
 		</trim>
 		
 		<trim prefix="values (" suffix=")" suffixOverrides="," >
 			<if test="title != null" >
-				#{title,jdbcType=VARCHAR},
+				#{title, jdbcType=VARCHAR},
 			</if>
 			<if test="content != null" >
-				#{content,jdbcType=LONGVARCHAR},
+				#{content, jdbcType=LONGVARCHAR},
 			</if>
 			<if test="createtime != null" >
-				#{createtime,jdbcType=TIMESTAMP},
+				#{createtime, jdbcType=TIMESTAMP},
 			</if>
 			<if test="updatetime != null" >
-				#{updatetime,jdbcType=TIMESTAMP},
+				#{updatetime, jdbcType=TIMESTAMP},
 			</if>
-			<if test="notebook.id != null" >
-				#{notebook.id,jdbcType=INTEGER},
+			<if test="status != null">
+				#{status, jdbcType=TINYINT},
+			</if>
+			<if test="notebook != null">
+				<if test="notebook.id != null" >
+					#{notebook.id, jdbcType=INTEGER},
+				</if>
+			</if>
+			<if test="user != null">
+				<if test="user.id != null">
+					#{user.id, jdbcType=INTEGER},
+				</if>
 			</if>
 	    </trim>
-	</insert> -->
+	</insert>
+	
 </mapper>

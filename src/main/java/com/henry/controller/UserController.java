@@ -85,13 +85,16 @@ public class UserController{
 	}
 	
 	/**
-	 * 转向到修改密码的页面
+	 * 转向到更新密码的页面
 	 */
 	@RequestMapping("/password")
 	public String password() {
 		return "password";
 	}
 	
+	/**
+	 * 更新用户密码 
+	 */
 	@RequestMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(String oldPassword, String newPassword, HttpSession session) {

@@ -27,10 +27,12 @@ public class Note {
 		this.user = user;
 	}
 
+    
+    
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", title=" + title + ", updatetime=" + updatetime + ", content=" + content
-				+ ", status=" + status + ", notebook=" + notebook + "]";
+		return "Note [id=" + id + ", title=" + title + ", createtime=" + createtime + ", updatetime=" + updatetime
+				+ ", content=" + content + ", status=" + status + ", notebook=" + notebook + ", user=" + user + "]";
 	}
 
 	public Integer getId() {

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	$("#insertButton").click(function() {
+	$("#insertNotebookButton").click(function() {
 		var name = $("#name").val();
 		
 		var args = {
@@ -13,6 +13,7 @@ $(document).ready(function() {
 				$("#inputName").addClass("has-error");
 			}
 			if(data==="success") {
+				
 				var url = path + "/notebook/list/" + id;
 				window.location.href = url;
 			}

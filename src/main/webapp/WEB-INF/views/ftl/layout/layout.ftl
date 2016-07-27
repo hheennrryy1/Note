@@ -77,12 +77,6 @@
 	                            	<i class="fa fa-book fa-fw"></i>创建笔记本
 	                            </a>
                             </li>
-                            
-                            
-                            
-                            <li><a href="#">笔记</a></li>
-                            <li><a href="#">笔记</a></li>
-                            <li><a href="#">笔记</a></li>
                         </ul>
                     </li>
                     
@@ -97,7 +91,7 @@
                             	</a>
                             </li>
                             <li>
-                            	<a href="#">
+                            	<a href="${path}/note/insert">
                             		<i class="fa fa-pencil"></i>创建笔记
                             	</a>
                             </li>
@@ -133,7 +127,7 @@
 		        	
 				<div class="modal-footer">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary" id="insertButton">创建笔记本</button>
+					<button type="button" class="btn btn-primary" id="insertNotebookButton">创建笔记本</button>
 				</div>
 			</div>
 		</div>

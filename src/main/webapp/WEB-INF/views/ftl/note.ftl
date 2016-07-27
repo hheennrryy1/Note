@@ -17,7 +17,7 @@
 				<a href="#" data-toggle="modal" data-target="#updateStatusModal">
 					<i class="fa fa-trash fa-2x"></i>
 				</a>
-				
+
 				<select name="notebooName" id="notebookName" class="form-control">
 					<#list notebooks as notebook>
 						<option value="${notebook.name}" <#if note.notebook.name == notebook.name>selected</#if>>

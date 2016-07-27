@@ -23,23 +23,31 @@ public class NotebookController {
 	@Autowired
 	private NotebookService notebookService;
 	
-	@RequestMapping("/list/{id}")
-	public ModelAndView list(ModelAndView mav, @PathVariable Integer id) {
+	/**
+	 * 根据用户id找到用户的所有笔记本
+	 */
+	@RequestMapping("/list/{userId}")
+	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId) {
 		mav.setViewName("notebookList");
-		Notebook notebook = new Notebook();
 		//根据用户的id查出全部笔记本
-		notebook.setUser(new User(id, null));
+		Notebook notebook = new Notebook(null, null, new User(userId, null));
 		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
 		mav.addObject("notebooks", notebooks);
 		return mav;
 	}
 	
+	/**
+	 * 返回的是笔记本下的笔记数 
+	 */
 	@RequestMapping("/count")
 	@ResponseBody
 	public Integer count(ModelAndView mav, Integer id) {
 		return notebookService.countNotesById(id);
 	}
 	
+	/**
+	 * 插入笔记本前先检测是否笔记本名字是否重复 
+	 */
 	@RequestMapping("/insert")
 	@ResponseBody
 	public String insert(Notebook notebook, HttpSession session) {
@@ -55,6 +63,9 @@ public class NotebookController {
 		return "success";
 	}
 	
+	/**
+	 * 根据id删除笔记本 
+	 */
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id, HttpSession session) {
 		User user = (User) session.getAttribute("user");
@@ -63,6 +74,9 @@ public class NotebookController {
 		return "redirect:/notebook/list/" + user.getId();
 	}
 	
+	/*
+	 * 根据notebook的id找到笔记本下的全部笔记
+	 */
 	@RequestMapping("/noteList/{id}")
 	public ModelAndView noteList(@PathVariable Integer id, ModelAndView mav) {
 		mav.setViewName("noteList");
