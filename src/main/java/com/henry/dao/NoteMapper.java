@@ -10,8 +10,6 @@ public interface NoteMapper {
 	
 	List<Note> selectByStatusAndUserId(Note note);
 	
-	int updateStatusById(Integer id);
-	
 	int deleteById(Integer id);
 	
 	int updateByIdSelective(Note note);

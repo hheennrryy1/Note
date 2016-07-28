@@ -26,8 +26,6 @@ public class Note {
 		this.status = status;
 		this.user = user;
 	}
-
-    
     
 	@Override
 	public String toString() {

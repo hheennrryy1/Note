@@ -39,7 +39,7 @@
 	</select>
 		
 	<select id="countNotesById" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-		 select count(*) from notebook nb,note n where nb.nbid = n.notebook_id and nb.nbid = #{id, jdbcType=INTEGER}
+		 select count(*) from notebook nb,note n where nb.nbid = n.notebook_id and nb.nbid = #{id, jdbcType=INTEGER} and n.status = 1
 	</select>
 	
 	<!-- 用于一对多查询notebook下的note-->

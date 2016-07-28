@@ -1,21 +1,7 @@
 <#import "layout/layout.ftl" as l>
 
-<@l.htmlHead "所有列表">
-		<script>
-			$(document).ready(function(){
-				$("#noteSetting").collapse();
-				$("#main-nav > li:eq(3)").addClass("active");
-				
-				
-				$(".updateStatus").click(function() {
-					var href = $(this).prev("a").attr("href");
-					var name = $(this).parent().prevAll("a").children().text();
-					$("#modal-body").text("确定删除" + name + "吗？");
-					$("#modal-footer > a").attr("href", href);
-					$("#deleteModal").modal();
-				});
-			})
-		</script>
+<@l.htmlHead "所有笔记">
+		<script src="${path}/js/my/allNoteList.js"></script>
 		<style>
 		 	.list-group li:hover {
 				background-color:#BDC3C7;
@@ -38,7 +24,7 @@
 					</a>
 					<p class="list-group-item-text">
 						最新修改于${note.updatetime?datetime}
-						<a href="${path}/note/updateStatus/${note.id}?nbid=${notebook.id}" style="display: none;"></a>
+						<a href="${path}/note/updateStatus/${note.id}?status=0" style="display: none;"></a>
 						&nbsp;&nbsp;<a class="updateStatus"><i class="fa fa-trash fa-lg"></i></a>
 					</p>
 				</li>

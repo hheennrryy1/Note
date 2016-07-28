@@ -33,12 +33,29 @@ public class NoteController {
 	 * 只更新状态，移到废纸篓，不是真正删除
 	 * 
 	 * @param id note的id
-	 * @param nbid notebook的id 用于更新状态后的跳转
+	 * @param nbid notebook的id 用于更新状态后的跳转,如果不为空,就跳转到笔记本的笔记列表，如果为空就跳转到所有笔记
 	 * @return
 	 */
 	@RequestMapping("/updateStatus/{id}")
-	public String updateStatus(@PathVariable Integer id, @RequestParam("nbid") Integer nbid) {
-		noteService.updateStatusById(id);
+	public String updateStatus(HttpSession session, @PathVariable Integer id,
+			@RequestParam(value = "nbid", required=false) Integer nbid,
+			@RequestParam("status") Byte status) {
+		User user = (User) session.getAttribute("user");
+		
+		Note note = new Note();
+		note.setId(id);
+		note.setStatus(status);
+		
+		noteService.updateByIdSelective(note);
+		
+		//转发到所有笔记
+		if(nbid==null) {
+			StringBuilder sb = new StringBuilder("redirect:/note/list/");
+			sb.append(user.getId()).append("?status=").append(status);
+			return sb.toString();
+		}
+		
+		//转发到该笔记的所有笔记
 		return "redirect:/notebook/noteList/" + nbid;
 	}
 	
@@ -105,7 +122,17 @@ public class NoteController {
 		Note note = new Note(status, new User(userId, null));
 		List<Note> notes = noteService.selectByStatusAndUserId(note);
 		mav.addObject("notes", notes);
-		mav.setViewName("allNoteList");
+		
+		if(status==1) {
+			System.out.println(1);
+			mav.setViewName("allNoteList");
+		}
+		
+		else if(status==0) {
+			System.out.println(0);
+			mav.setViewName("trash");
+		}
+		
 		return mav;
 	}
 	
@@ -143,5 +170,16 @@ public class NoteController {
 		noteService.insertSelective(note);
 		mav.setViewName("redirect:/notebook/noteList/" + notebook.getId());
 		return mav;
+	}
+	
+	/**
+	 * 从废纸篓彻底删除note 
+	 */
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		
+		noteService.deleteById(id);
+		return "redirect:/note/list/" + user.getId() + "?status=0";
 	}
 }

@@ -26,10 +26,6 @@ public class NoteService {
 		return mapper.deleteById(id);
 	}
 	
-	public int updateStatusById(Integer id) {
-		return mapper.updateStatusById(id);
-	}
-	
 	public int updateByIdSelective(Note note) {
 		return mapper.updateByIdSelective(note);
 	}

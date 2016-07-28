@@ -1,6 +1,6 @@
 <#import "layout/layout.ftl" as l>
 
-<@l.htmlHead "首页">
+<@l.htmlHead "创建笔记">
 		<script src="${path}/js/public/summernote.min.js"></script>
 		<script src="${path}/js/my/insertNote.js"></script>
 		<link rel="stylesheet" href="${path}/css/summernote.css"/>

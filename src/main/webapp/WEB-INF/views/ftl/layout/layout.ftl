@@ -96,7 +96,7 @@
                             	</a>
                             </li>
                             <li>
-	                            <a href="#">
+	                            <a href="${path}/note/list/${Session.user.id}?status=0">
 	                            	<i class="fa fa-trash-o"></i>废纸篓
 	                            </a>
                             </li>

@@ -24,7 +24,7 @@
 	
 	<!-- 多对一的方式选择一个用户所有的笔记  -->
   	<select id="selectByStatusAndUserId" parameterType="Note" resultMap="BaseResultMap">
-		select n.nid,n.title,n.content,n.createtime,n.updatetime,n.status
+		select n.nid,n.title,n.createtime,n.updatetime,n.status
 		from note n, user u
 		where u.id = n.user_id and n.status = #{status, jdbcType=TINYINT} and n.user_id = #{user.id,jdbcType=INTEGER}
 	</select>
@@ -33,12 +33,6 @@
 		delete from note
 		where nid = #{id, jdbcType=INTEGER}
 	</delete>
-	
-	<update id="updateStatusById" parameterType="java.lang.Integer">
-		update note
-		set status = 0
-		where nid = #{id, jdbcType=INTEGER} 
-	</update>
 	
 	<update id="updateByIdSelective" parameterType="Note">
 		update note
@@ -56,6 +50,9 @@
 			</if>
 			<if test="content != null">
 				content = #{content, jdbcType=LONGVARCHAR},
+			</if>
+			<if test="status != null">
+				status = #{status, jdbcType=TINYINT},
 			</if>
 		</set>
 		where nid = #{id, jdbcType=INTEGER}
