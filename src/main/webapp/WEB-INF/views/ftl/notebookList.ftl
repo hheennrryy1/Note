@@ -2,6 +2,27 @@
 
 <@l.htmlHead "笔记本">
 		<script src="${path}/js/my/noteBookList.js"></script>
+		<script>
+			$(document).ready(function(){
+				var pageNum = ${page.pageNum}; <#-- 这里从0开始 -->
+				var pages = ${page.pages}; <#--总页数-->
+				if(pageNum<=5) {
+					$("#page ul li").eq(pageNum-1).addClass("active");
+				}
+				else if(pages == pageNum+2) {
+					$("#page ul li").eq(5).addClass("active");
+				}
+				else if(pages == pageNum+1) {
+					$("#page ul li").eq(6).addClass("active");
+				}
+				else if(pages == pageNum) {
+					$("#page ul li").eq(7).addClass("active");
+				}
+				else {
+					$("#page ul li").eq(4).addClass("active");
+				}
+			})
+		</script>
 		<style>
 		 	.list-group li:hover {
 				background-color:#BDC3C7;
@@ -12,7 +33,7 @@
 <@l.htmlBody>
 	<div class="container">
 		<ul class="list-group">
-			<#list notebooks as notebook>
+			<#list page.list as notebook>
 				<li class="list-group-item">
 					<a href="${path}/notebook/noteList/${notebook.id}">
 						<h4 class="list-group-item-heading"><i class="fa fa-book"></i>${notebook.name}</h4>
@@ -30,7 +51,21 @@
 				<br />
 			</#list>
 		</ul>
+		
+		<div id="page">
+            <ul class="pagination">
+              <#list page.navigatepageNums as i>
+              	<li><a href="${path}/notebook/list/${Session.user.id}?pageNum=${i}">${i}</a></li>
+              </#list>
+            </ul>
+            
+          	  <span>共${page.pages}页</span>
+		</div>
+      
+      
+      
 	</div>
+	
 	
     <#--模态框-->
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

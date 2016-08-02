@@ -11,9 +11,7 @@ import com.henry.dao.UserMapper;
 import com.henry.entity.User;
 import com.henry.service.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:Spring.xml", "classpath:Spring-Mybatis.xml"})
-public class UserDaoTest {
+public class UserDaoTest extends BasicTest {
 	
 	@Autowired
 	UserMapper mapper;

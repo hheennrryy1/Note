@@ -20,7 +20,17 @@
 		<!-- 别名 -->
 		<property name="typeAliasesPackage" value="com.henry.entity"></property>
 		<property name="mapperLocations" value="classpath:com/henry/mapping/*.xml" />
-		
+		<property name="plugins">
+			<array>
+			  <bean class="com.github.pagehelper.PageHelper">
+			    <property name="properties">
+			      <value>
+			        dialect=mysql
+			      </value>
+			    </property>
+			  </bean>
+			</array>
+		</property>
 	</bean>
 	
 	<!-- 此处扫描的是Mapper接口 ，不用再加@Repository  -->  

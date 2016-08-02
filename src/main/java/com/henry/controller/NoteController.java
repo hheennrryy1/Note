@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,10 +26,20 @@ import com.henry.service.NotebookService;
 @RequestMapping("/note")
 public class NoteController {
 	
+	Logger logger = Logger.getLogger(NoteController.class);
+	
 	@Autowired
 	private NoteService noteService;
 	@Autowired
 	private NotebookService notebookService;
+	
+	private User user;
+	
+	@ModelAttribute
+	public void getUser(HttpSession session) {
+		logger.info("ModelAttr");
+		user = (User) session.getAttribute("user");
+	}
 	
 	/**
 	 * 只更新状态，移到废纸篓，不是真正删除
@@ -64,9 +76,7 @@ public class NoteController {
 	 * 转向到更新note的页面
 	 */
 	@RequestMapping("/select/{id}")
-	public ModelAndView select(ModelAndView mav, @PathVariable Integer id, HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		
+	public ModelAndView select(ModelAndView mav, @PathVariable Integer id) {
 		mav.setViewName("note");
 		Note note = noteService.selectById(id);
 		//找到单个note
@@ -98,8 +108,7 @@ public class NoteController {
 	@RequestMapping("/updateNotebookId")
 	@ResponseBody
 	public String updateNotebookId(String notebookName, Integer noteId) {
-		Notebook notebook = new Notebook(notebookName, null, null);
-		
+		Notebook notebook = new Notebook(notebookName, null, user);
 		//根据notebook名字找到id
 		notebook = notebookService.selectiveSelect(notebook).get(0);
 		Note note = new Note();
@@ -140,9 +149,7 @@ public class NoteController {
 	 * 转向到插入笔记的页面
 	 */
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public ModelAndView insert(ModelAndView mav, HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		
+	public ModelAndView insert(ModelAndView mav) {
 		Notebook notebook = new Notebook(null, null, user);
 		//找到用户的所有笔记本
 		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
@@ -155,10 +162,9 @@ public class NoteController {
 	 * 插入笔记 
 	 */
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
-	public ModelAndView insert(ModelAndView mav, HttpSession session, Note note) {
-		User user = (User) session.getAttribute("user");
-		
+	public ModelAndView insert(ModelAndView mav, Note note) {
 		Notebook notebook = note.getNotebook();
+		notebook.setUser(user);
 		//根据name找id
 		notebook = notebookService.selectiveSelect(notebook).get(0);
 		Date date = new Date();
@@ -176,9 +182,7 @@ public class NoteController {
 	 * 从废纸篓彻底删除note 
 	 */
 	@RequestMapping("/delete/{id}")
-	public String delete(@PathVariable Integer id, HttpSession session) {
-		User user = (User)session.getAttribute("user");
-		
+	public String delete(@PathVariable Integer id) {
 		noteService.deleteById(id);
 		return "redirect:/note/list/" + user.getId() + "?status=0";
 	}

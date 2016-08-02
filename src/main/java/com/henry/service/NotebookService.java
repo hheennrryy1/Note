@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.henry.dao.NotebookMapper;
 import com.henry.entity.Notebook;
 
@@ -16,6 +18,14 @@ public class NotebookService {
 	
 	public List<Notebook> selectiveSelect(Notebook notebook) {
 		return mapper.selectiveSelect(notebook);
+	}
+	
+	public PageInfo<Notebook> selectNotesByNtbkId(Notebook notebook, int pageNum) {
+		//pageNum,pageSize 每页显示5条
+		PageHelper.startPage(pageNum, 5);
+		List<Notebook> notebooks =  mapper.selectiveSelect(notebook);
+		PageInfo<Notebook> page = new PageInfo<Notebook>(notebooks);
+		return page;
 	}
 	
 	public int countNotesById(Integer id) {

@@ -67,7 +67,7 @@
                         </a>
                         <ul id="notebookSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li>
-                            	<a href="${path}/notebook/list/${Session.user.id}">
+                            	<a href="${path}/notebook/list/${Session.user.id}?pageNum=1">
                          		   <i class="fa fa-sign-out"></i>笔记本列表
                             	</a>
                             </li>

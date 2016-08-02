@@ -4,21 +4,22 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.henry.dao.NotebookMapper;
 import com.henry.entity.Notebook;
 import com.henry.entity.User;
+import com.henry.service.NotebookService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={"classpath:Spring.xml", "classpath:Spring-Mybatis.xml"})
-public class NotebookDaoTest {
+public class NotebookDaoTest extends BasicTest {
 	
 	@Autowired
 	NotebookMapper mapper;
+	
+	@Autowired
+	NotebookService service;
 	
 	@Test
 	@Ignore
@@ -34,10 +35,22 @@ public class NotebookDaoTest {
 	}
 	
 	@Test
+	@Ignore
 	public void selective() {
 		Notebook nb = new Notebook();
 		nb.setId(6);
 		List<Notebook> notebooks = mapper.selectiveSelect(nb);
 		System.out.println(notebooks);
+	}
+	
+	@Test
+	public void selectNotes() {
+		Notebook notebook = new Notebook();
+		User user = new User();
+		user.setId(2);
+		notebook.setUser(user);
+		
+		PageInfo<Notebook> page = service.selectNotesByNtbkId(notebook, 1);
+		System.out.println(page.getPages());
 	}
 }

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
 import com.henry.entity.Notebook;
 import com.henry.entity.User;
 import com.henry.service.NotebookService;
@@ -27,12 +29,12 @@ public class NotebookController {
 	 * 根据用户id找到用户的所有笔记本
 	 */
 	@RequestMapping("/list/{userId}")
-	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId) {
+	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId, @RequestParam Integer pageNum) {
 		mav.setViewName("notebookList");
 		//根据用户的id查出全部笔记本
 		Notebook notebook = new Notebook(null, null, new User(userId, null));
-		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
-		mav.addObject("notebooks", notebooks);
+		PageInfo<Notebook> page = notebookService.selectNotesByNtbkId(notebook, pageNum);
+		mav.addObject("page", page);
 		return mav;
 	}
 	
@@ -52,6 +54,8 @@ public class NotebookController {
 	@ResponseBody
 	public String insert(Notebook notebook, HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		
+		notebook.setUser(user);
 		//根据名字查笔记，以防名字重复
 		List<Notebook> notebooks = notebookService.selectiveSelect(notebook);
 		if(!notebooks.isEmpty()) {

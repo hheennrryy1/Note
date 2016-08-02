@@ -13,8 +13,8 @@ $(document).ready(function() {
 				$("#inputName").addClass("has-error");
 			}
 			if(data==="success") {
-				
-				var url = path + "/notebook/list/" + id;
+				//成功后跳到第一页
+				var url = path + "/notebook/list/" + id + "?pageNum=1";
 				window.location.href = url;
 			}
 		});

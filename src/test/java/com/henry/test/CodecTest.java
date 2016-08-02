@@ -38,6 +38,7 @@ public class CodecTest {
 	    }
 	
 	@Test
+	@Ignore
 	public void password() throws UnsupportedEncodingException {
 		String salt = PasswordUtil.generate();
 		String password = DigestUtils.sha512Hex("test");
@@ -45,5 +46,4 @@ public class CodecTest {
 		System.out.println(salt.length());
 		System.out.println(password);
 	}
-	
 }
