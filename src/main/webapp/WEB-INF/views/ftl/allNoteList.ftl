@@ -2,6 +2,11 @@
 
 <@l.htmlHead "所有笔记">
 		<script src="${path}/js/my/allNoteList.js"></script>
+		<script>
+			var pageNum = ${page.pageNum};
+			var pages = ${page.pages};
+		</script>
+		<script src="${path}/js/my/page.js"></script>
 		<style>
 		 	.list-group li:hover {
 				background-color:#BDC3C7;
@@ -14,7 +19,7 @@
 		<h1 class="text-center"><i class="fa fa-list"></i>所有笔记 <small>所有笔记</small></h1>
 		
 		<ul class="list-group" id="notebookList">
-			<#list notes as note>
+			<#list page.list as note>
 				<li class="list-group-item">
 					<a href="${path}/note/select/${note.id}">
 						<h4 class="list-group-item-heading">
@@ -32,6 +37,16 @@
 				<br />
 			</#list>
 		</ul>
+		
+		<div id="page">
+            <ul class="pagination">
+              <#list page.navigatepageNums as i>
+              	<li><a href="${path}/note/list/${Session.user.id}?status=1&pageNum=${i}">${i}</a></li>
+              </#list>
+            </ul>
+          	<span>共${page.pages}页</span>
+		</div>
+		
 	</div>
 	
     <#--模态框-->

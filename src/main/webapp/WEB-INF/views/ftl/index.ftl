@@ -4,5 +4,6 @@
 </@l.htmlHead>
 
 <@l.htmlBody>
-	<h1>首页</h1>	
+	<h1>笔记系统  Note System</h1>
+	<h2>联系作者 Contact : zenghenghao@foxmail.com </h2>
 </@l.htmlBody>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.github.pagehelper.PageInfo;
 import com.henry.entity.Note;
 import com.henry.entity.Notebook;
 import com.henry.entity.User;
@@ -63,7 +64,8 @@ public class NoteController {
 		//转发到所有笔记
 		if(nbid==null) {
 			StringBuilder sb = new StringBuilder("redirect:/note/list/");
-			sb.append(user.getId()).append("?status=").append(status);
+			sb.append(user.getId()).append("?status=")
+				.append(status).append("&pageNum=1");
 			return sb.toString();
 		}
 		
@@ -127,18 +129,18 @@ public class NoteController {
 	 * 转到笔记列表，显示该用户的所有笔记 
 	 */
 	@RequestMapping("/list/{userId}")
-	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId, @RequestParam Byte status) {
+	public ModelAndView list(ModelAndView mav, @PathVariable Integer userId, 
+			@RequestParam() Byte status, @RequestParam int pageNum) {
 		Note note = new Note(status, new User(userId, null));
-		List<Note> notes = noteService.selectByStatusAndUserId(note);
-		mav.addObject("notes", notes);
+		
+		PageInfo<Note> page = noteService.selectByStatusAndUserId(note, pageNum);
+		mav.addObject("page", page);
 		
 		if(status==1) {
-			System.out.println(1);
 			mav.setViewName("allNoteList");
 		}
 		
 		else if(status==0) {
-			System.out.println(0);
 			mav.setViewName("trash");
 		}
 		
@@ -184,6 +186,6 @@ public class NoteController {
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		noteService.deleteById(id);
-		return "redirect:/note/list/" + user.getId() + "?status=0";
+		return "redirect:/note/list/" + user.getId() + "?status=0&pageNum=1";
 	}
 }

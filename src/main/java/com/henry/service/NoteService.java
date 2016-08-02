@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.henry.dao.NoteMapper;
 import com.henry.entity.Note;
 
@@ -14,12 +16,18 @@ public class NoteService {
 	@Autowired
 	private NoteMapper mapper;
 	
+	public static final int PAGE_SIZE = 3;
+	
 	public Note selectById(Integer id) {
 		return mapper.selectById(id);
 	}
 	
-	public List<Note> selectByStatusAndUserId(Note note) {
-		return mapper.selectByStatusAndUserId(note);
+	public PageInfo<Note> selectByStatusAndUserId(Note note, int pageNum) {
+		//pageNum 第几页,pageSize 每页显示多少条
+		PageHelper.startPage(pageNum, PAGE_SIZE);
+		List<Note> notes =  mapper.selectByStatusAndUserId(note);
+		PageInfo<Note> page = new PageInfo<>(notes);
+		return page;
 	}
 	
 	public int deleteById(Integer id) {

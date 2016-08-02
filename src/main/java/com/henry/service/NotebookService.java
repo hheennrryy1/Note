@@ -16,13 +16,15 @@ public class NotebookService {
 	@Autowired
 	private NotebookMapper mapper;
 	
+	public static final int PAGE_SIZE = 3;
+	
 	public List<Notebook> selectiveSelect(Notebook notebook) {
 		return mapper.selectiveSelect(notebook);
 	}
 	
 	public PageInfo<Notebook> selectNotesByNtbkId(Notebook notebook, int pageNum) {
 		//pageNum,pageSize 每页显示5条
-		PageHelper.startPage(pageNum, 5);
+		PageHelper.startPage(pageNum, PAGE_SIZE);
 		List<Notebook> notebooks =  mapper.selectiveSelect(notebook);
 		PageInfo<Notebook> page = new PageInfo<Notebook>(notebooks);
 		return page;

@@ -75,7 +75,7 @@ public class NotebookController {
 		User user = (User) session.getAttribute("user");
 		
 		notebookService.delete(id);
-		return "redirect:/notebook/list/" + user.getId();
+		return "redirect:/notebook/list/" + user.getId() + "?pageNum=1";
 	}
 	
 	/*

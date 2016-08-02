@@ -3,26 +3,10 @@
 <@l.htmlHead "笔记本">
 		<script src="${path}/js/my/noteBookList.js"></script>
 		<script>
-			$(document).ready(function(){
-				var pageNum = ${page.pageNum}; <#-- 这里从0开始 -->
-				var pages = ${page.pages}; <#--总页数-->
-				if(pageNum<=5) {
-					$("#page ul li").eq(pageNum-1).addClass("active");
-				}
-				else if(pages == pageNum+2) {
-					$("#page ul li").eq(5).addClass("active");
-				}
-				else if(pages == pageNum+1) {
-					$("#page ul li").eq(6).addClass("active");
-				}
-				else if(pages == pageNum) {
-					$("#page ul li").eq(7).addClass("active");
-				}
-				else {
-					$("#page ul li").eq(4).addClass("active");
-				}
-			})
+			var pageNum = ${page.pageNum};
+			var pages = ${page.pages};
 		</script>
+		<script src="${path}/js/my/page.js"></script>
 		<style>
 		 	.list-group li:hover {
 				background-color:#BDC3C7;
@@ -58,8 +42,7 @@
               	<li><a href="${path}/notebook/list/${Session.user.id}?pageNum=${i}">${i}</a></li>
               </#list>
             </ul>
-            
-          	  <span>共${page.pages}页</span>
+          	<span>共${page.pages}页</span>
 		</div>
       
       

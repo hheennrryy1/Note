@@ -86,7 +86,7 @@
                         </a>
                         <ul id="noteSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
                             <li>
-                            	<a href="${path}/note/list/${Session.user.id}?status=1">
+                            	<a href="${path}/note/list/${Session.user.id}?status=1&pageNum=1">
                             		<i class="fa fa-list"></i>所有笔记
                             	</a>
                             </li>
@@ -96,7 +96,7 @@
                             	</a>
                             </li>
                             <li>
-	                            <a href="${path}/note/list/${Session.user.id}?status=0">
+	                            <a href="${path}/note/list/${Session.user.id}?status=0&pageNum=1">
 	                            	<i class="fa fa-trash-o"></i>废纸篓
 	                            </a>
                             </li>

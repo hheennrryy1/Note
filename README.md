@@ -1,4 +1,4 @@
-##Note 笔记本系统
+##Note 笔记系统
 ###Framework and Tools 框架和工具
 * Java&IDE: JDK8 Eclipse
 * Backend: SpringMVC4.2.5 Spring4.2.5 MyBatis3.4.0 (Configured by annotation)
